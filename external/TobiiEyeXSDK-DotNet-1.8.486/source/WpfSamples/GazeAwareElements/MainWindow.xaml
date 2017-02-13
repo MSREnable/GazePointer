@@ -1,0 +1,219 @@
+﻿<!-- ........................................................ -->
+<!-- Copyright 2014 Tobii Technology AB. All rights reserved. -->
+<!-- ........................................................ -->
+
+<Window x:Class="GazeAwareElements.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework"
+        KeyDown="Window_KeyDown"
+        Title="MainWindow" Height="700" Width="800" WindowStartupLocation="CenterScreen">
+
+    <!-- This WPF sample illustrates how FrameworkElements can be made responsive to eye-gaze
+         by setting the Gaze-aware Behavior on them.
+    
+         Gaze-aware interaction works like this for the user:
+         The user looks at some element or area on the screen long enough, and the application
+         responds to the eye-gaze in some manner. It could be changing something in the user
+         interface or it could be changing state under the hood in order to create a better
+         user experience.
+        
+         Read more about the Gaze-aware Behavior and its associated concepts in the 
+         Developer's Guide (available online and in the SDK docs/ folder) -->
+
+    <Window.Resources>
+        <!-- We make use of the attached properties provided in the EyeXFramework.Wpf namespace to 
+             make a FrameworkElement Gaze-aware and specify its behavior.
+       
+             When the user's eye-gaze falls within the bounds of a Gaze-aware element, the 
+             EyeXFramework sets the attached property Behavior.HasGaze of that element to true, 
+             and raises the RoutedEvent Behavior.HasGazeChanged. 
+        
+             When the eye-gaze is no longer within the bounds of the element, the HasGaze
+             property is set to false, and a HasGazeChanged event is yet again raised.
+        
+             There is also a Gaze-aware delay property. This delay is set to the number of 
+             milliseconds we want the eye-gaze to have been within the bounds of the element 
+             before the HasGaze property is set to true and the HasGazeEvent is raised. 
+        
+             A long enough delay increases the probability that the HasGaze property is only set
+             to true when the user is intentionally focusing his or her eye-gaze on the element.
+        
+             Without a delay, and with a delay that is too short, the element will react to 
+             unintentional glances. 
+        
+             On the other hand, if the delay is too long, the interaction will not be
+             responsive enough, and the user will percieve it as slow.
+        
+             Try and change the delay up and down and run the sample to get a feeling for
+             the tradeoff between a stable and a responsive user experience. -->
+        <Style x:Key="EyeXGazeAwareElement" TargetType="FrameworkElement">
+            <Setter Property="eyeX:Behavior.GazeAware" Value="True" />
+            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="250" />
+        </Style>
+
+        <!-- In the following three styles we make use of the fact that the Behavior.HasGaze
+             property is set to true when the eye-gaze falls within the Gaze-aware element.
+        
+             By use of a trigger on the Behavior.HasGaze property we can change the element's
+             background to different colors depending on whether HasGaze is true or not. 
+        
+             These three styles are used for the panel, button and 'Hello!' text in the upper
+             part of the sample window. -->
+        <Style x:Key="EyeXGazeAwarePanel" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="Panel">
+            <Setter Property="Background" Value="MediumPurple" />
+            <Style.Triggers>
+                <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
+                    <Setter Property="Background" Value="DarkMagenta" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="EyeXGazeAwareButton" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="Button">
+            <Setter Property="Background" Value="LightSteelBlue" />
+            <Style.Triggers>
+                <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
+                    <Setter Property="Background" Value="DeepSkyBlue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="EyeXGazeAwareText" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="DimGray" />
+            <Style.Triggers>
+                <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- In the following style we are making use of the Behavior.HasGazeChanged RoutedEvent.
+             The style is used for the animated instruction in the lower part of the sample window. 
+        
+             This style also examplifies the challenges of creating a good Gaze-aware interaction.
+             Please read through the comments for the full story. -->
+        <Style x:Key="EyeXGazeAwareInstruction" TargetType="TextBlock">
+            <Setter Property="eyeX:Behavior.GazeAware" Value="True" />
+            <!-- The instruction text is displayed when the user has looked long enough on the text
+                 'Look here for instruction...'. The delay is set to 750 ms. If the delay is too short
+                 the user could end up in a frustrating loop when closing the instruction:
+                 Animation and movements attracts the attention of the eye, so when the instruction
+                 text is changed from the full length text to the short teaser, the eye-gaze is
+                 attracted to the newly displayed teaser text. With a short gaze aware delay, the
+                 instruction would be re-opened just after the user had closed it. -->
+            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="450" />
+            <!-- Here we specify the event handler for the HasGazeChanged event. -->
+            <EventSetter Event="eyeX:Behavior.HasGazeChanged" Handler="Instruction_OnHasGazeChanged" />
+            <EventSetter Event="MouseEnter" Handler="Instruction_OnMouseEnter" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Text" Value="Look here for instruction..." />
+            <!-- We use a data trigger bound to a property in the MainWindowModel to govern 
+                 the displaying of the instruction teaser and full instruction text. -->
+            <Style.Triggers>
+                <!-- The ShowInstruction property in the MainWindowModel is set to true when there
+                     is a HasGazeChanged event with HasGaze == true. 
+                
+                     The ShowInstruction property is set to false when the user presses the 'c' key
+                     on the keyboard. 
+                
+                     So, the user opens the instruction by just looking, but closes it by pressing
+                     a key on the keyboard.
+                
+                     Why is the interaction asymmetrical? Why are we using keyboard input for 
+                     closing the instruction instead of setting the ShowInstruction property to
+                     false when there is a HasGazeChanged event with HasGaze == false?
+                
+                     Think about the natural eye movements when reading the instruction. The
+                     instruction tells the user how to interact with the elements in the upper
+                     part of the sample window. The user's eye-gaze will naturally wander
+                     up and down between the elements above and the instruction text below while
+                     reading it.
+                
+                     If we were to close the instruction when the user is temporarily looking
+                     above it, the user would have to keep re-opening the instruction text
+                     to be able to finish reading it, and that would be a very disruptive and
+                     frustrating user experience. (You can try this out by changing the 
+                     MainWindowModel to always set the ShowInstruction property to the value
+                     of the hasGaze argument in the method NotifyInstructionHasGazeChanged). -->
+                <DataTrigger Binding="{Binding ShowInstruction}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!-- Animation when opening the instruction -->
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                 From="24" To="18" Duration="0:0:0.3" />
+                                <StringAnimationUsingKeyFrames Storyboard.TargetProperty="Text"
+                                                               Duration="0:0:1" FillBehavior="HoldEnd">
+                                    <DiscreteStringKeyFrame KeyTime="0:0:0"   Value="Look here for instruction..." />
+                                    <DiscreteStringKeyFrame KeyTime="0:0:0.3" Value="Instruction: The visual elements above respond to your eye-gaze. First, move away the mouse cursor. Now, look at one of the colored surfaces or the 'Hello!', and after a pre-defined delay they will change color from a dim to a clear color. As long as the eye-gaze falls within a child element its parent element will be considered looked at as well. Open MainWindow.xaml to see how it is done. (C)lose instruction. (Q)uit application." />
+                                </StringAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!-- Animation when closing the instruction -->
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                 From="18" To="24" Duration="0:0:0.0" />
+                                <StringAnimationUsingKeyFrames Storyboard.TargetProperty="Text"
+                                                           Duration="0:0:0.3" FillBehavior="HoldEnd">
+                                    <DiscreteStringKeyFrame Value="Look here for instruction..." KeyTime="0:0:0" />                                  
+                                </StringAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Gaze-aware elements -->
+        <StackPanel Grid.Row="1" 
+                    Grid.Column="1" 
+                    Style="{StaticResource EyeXGazeAwarePanel}">
+
+            <Button Margin="70"
+                    BorderThickness="0"
+                    Style="{StaticResource EyeXGazeAwareButton}">
+                <TextBlock Margin="70"
+                           FontSize="72"
+                           FontWeight="Bold"
+                           Style="{StaticResource EyeXGazeAwareText}">
+                    Hello!
+                </TextBlock>
+            </Button>
+            
+        </StackPanel>
+
+        <!-- Gaze-aware instruction text block -->
+        <Border Grid.Row="3"
+                Grid.Column="1"
+                VerticalAlignment="Stretch"
+                BorderBrush="{x:Null}"
+                MinWidth="150" 
+                MinHeight="100">
+            <TextBlock Grid.Row="3"
+                       Grid.Column="1"
+                       TextWrapping="WrapWithOverflow"
+                       VerticalAlignment="Top"
+                       Padding="0 0 0 10"
+                       Background="Transparent"
+                       Style="{StaticResource EyeXGazeAwareInstruction}">
+            </TextBlock>
+        </Border>
+    </Grid>
+</Window>

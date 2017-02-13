@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>MSR Enable</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/MSREnable/EnablingTech</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>HandsFree Mouse Library</description>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+  <files>
+    <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll" target="lib\net461" />
+    <file src="..\..\external\TobiiGaze.2.0.3.182\Tobii.Gaze.Core.Net.dll" target="lib\net461" />
+	<file src="install.ps1" target="tools" />
+  </files>
+</package>

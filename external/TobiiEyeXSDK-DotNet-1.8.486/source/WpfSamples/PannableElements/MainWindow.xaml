@@ -1,0 +1,86 @@
+﻿<!-- ........................................................ -->
+<!-- Copyright 2015 Tobii AB (publ). All rights reserved.     -->
+<!-- ........................................................ -->
+    
+<Window x:Class="PannableElements.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework"
+        KeyDown="MainWindow_OnKeyDown"
+        KeyUp="MainWindow_OnKeyUp"
+        Title="MainWindow" Height="700" Width="800" WindowStartupLocation="CenterScreen">
+
+    <!-- This WPF sample illustrates how FrameworkElements can be enabled for EyeX panning/scrolling
+         by setting the Pannable Behavior on them.
+    
+         EyeX panning/scrolling works like this for the user:
+         - The user looks towards the edge of a gui element with pannable contents.
+         - The user presses and holds the Right Shift key on the keyboard, and the contents pans according to the direction 
+           the user is looking.
+    
+         As long as the button is held down, the EyeX Engine will raise panning events to the client
+         applications. These events contain information about the velocity the contents should be 
+         scrolled in the x and y directions. 
+    
+         In this sample we will make use of an AutoPan functionality only available for the EyeX WPF 
+         integration. When using the AutoPan functionality the scrolling of the contents will be 
+         automatically handled by a VelocityScroller. For this to work, the pannable element must
+         must be contained by a ScrollViewer.
+    
+         Read more about the Pannable Behavior and its associated concepts in the 
+         Developer's Guide (available online and in the SDK docs/ folder) -->
+    
+    <Window.Resources>
+        <Style x:Key="EyeXAutoPannableStyle" TargetType="FrameworkElement">
+            <!-- Tell the EyeX Engine that the element decorated with this
+                 style is interested in receiving panning events. 
+            
+                 Read more about the Pannable Behavior and its associated concepts in the 
+                 Developer's Guide (available online and in the SDK docs/ folder)-->
+            <Setter Property="eyeX:Behavior.Pannable" Value="Default" />
+            
+            <!-- We set the available pan directions to up and down. The default
+                 value if not set is "All". One might want to update this
+                 dynamically when content has been scrolled to an end state where
+                 it can no longer be scrolled further in a certain direction 
+                 (not shown in this example). -->
+            <Setter Property="eyeX:Behavior.AvailablePanDirections" Value="Down,Up" />
+
+            <!-- We're interested in vertical panning.
+                 By selecting a panning profile we are instructing the EyeX Engine
+                 to use the most suitable velocity profile for the kind of panning or 
+                 scrolling we want. A velocity profile means that looking at different
+                 parts of the pannable area results in different panning velocities. 
+                 The profile also defines dead zones and the points where the
+                 panning changes directions. 
+                 You can test the difference in scrolling experience by changing this 
+                 value to Radial, which is a profile optimized for panning in all 
+                 directions that does not work very well for the vertical scrolling 
+                 situation.
+                 -->
+            <Setter Property="eyeX:Behavior.PanningProfile" Value="Vertical" />
+            
+            <!-- We want the EyeX Engine to pan the element automatically for us. 
+                 This is only available for WPF elements that are contained by a 
+                 ScrollViewer. 
+                 There are standard controls like ListView that are automatically 
+                 contained by a ScrollViewer, or you could roll your own custom 
+                 element by enclosing it in a ScrollViewer directly in the xaml.
+            -->
+            <Setter Property="eyeX:Behavior.AutoPan" Value="True" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="15" TextWrapping="Wrap">
+            Press and hold the Right Shift key, and look towards the lower/upper part of the window to scroll down/up.
+        </TextBlock>
+        <ListView Grid.Row="1" Name="PannableListView" Style="{StaticResource EyeXAutoPannableStyle}"
+                  HorizontalContentAlignment="Center" />
+    </Grid>
+
+</Window>

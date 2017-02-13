@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{48E96990-1267-477A-8AD3-E4972F3C8945}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.HandsFree.Sensors</RootNamespace>
+    <AssemblyName>Microsoft.HandsFree.Sensors</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;x64</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;x64</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.3.443.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Gaze.Core.Net">
+      <HintPath>..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\Tobii.Gaze.Core.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EyeXFramework\DataStreamBase.cs" />
+    <Compile Include="EyeXFramework\EngineStateAccessor.cs" />
+    <Compile Include="EyeXFramework\EngineStateValue.cs" />
+    <Compile Include="EyeXFramework\EnumerableStateAccessor.cs" />
+    <Compile Include="EyeXFramework\EyePositionDataStream.cs" />
+    <Compile Include="EyeXFramework\EyeXHost.cs" />
+    <Compile Include="EyeXFramework\EyeXHost.Profile.cs" />
+    <Compile Include="EyeXFramework\EyeXHost.Tools.cs" />
+    <Compile Include="EyeXFramework\FixationDataStream.cs" />
+    <Compile Include="EyeXFramework\GazePointDataStream.cs" />
+    <Compile Include="EyeXFramework\IDataStreamObserver.cs" />
+    <Compile Include="EyeXFramework\InteractorIDGenerator.cs" />
+    <Compile Include="GazeDataProvider.cs" />
+    <Compile Include="IGazeDataProvider.cs" />
+    <Compile Include="LoggingSettings.cs" />
+    <Compile Include="LogPlaybackSdk.cs" />
+    <Compile Include="MouseEmulationSettings.cs" />
+    <Compile Include="MouseSdk.cs" />
+    <Compile Include="NullSdk.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sensors.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="TobiiEyeXSdk.cs" />
+    <Compile Include="TobiiGazeSdk.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\msvcp110.dll">
+      <Link>msvcp110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\msvcr110.dll">
+      <Link>msvcr110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\vccorlib110.dll">
+      <Link>vccorlib110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.dll">
+      <Link>Tobii.EyeX.Client.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\TobiiGazeCore64.dll">
+      <Link>TobiiGazeCore64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj">
+      <Project>{3d58b016-b156-4401-8785-4e0182655ede}</Project>
+      <Name>Microsoft.HandsFree.MVVM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.HandsFree.Settings\Microsoft.HandsFree.Settings.csproj">
+      <Project>{C738745B-1AF0-4D65-BEA7-082FB61864EC}</Project>
+      <Name>Microsoft.HandsFree.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
