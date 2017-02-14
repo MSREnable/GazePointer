@@ -1,0 +1,111 @@
+﻿<Window x:Class="GazePointerTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GazePointerTest"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="2736" Width="1824"
+        WindowStyle="None"
+        WindowState="Maximized"
+        FontSize="36"
+        FontFamily="Segoe UI Symbol"
+        Foreground="White"
+        Background="Black">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="246*"/>
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="1926*"/>
+            <RowDefinition Height="138*"/>
+            <RowDefinition Height="246*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Viewbox Grid.Row="2" Margin="4,0,36,0" Stretch="Fill">
+            <ItemsControl ItemsSource="{Binding Tracks}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="79">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Source.Name}" Width="Auto" VerticalAlignment="Center" Panel.ZIndex="120" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.ColumnSpan="2" Foreground="#7FFFFFFF" IsHitTestVisible="False" FontSize="24"/>
+
+                            <ItemsControl ItemsSource="{Binding Hits}" Grid.ColumnSpan="1" Grid.Column="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Rectangle Fill="#FF666666" Visibility="{Binding IsFirstInBar, Converter={StaticResource BooleanToVisibilityConverter}}" Width="2" HorizontalAlignment="Left"/>
+                                            <ToggleButton Grid.Column="1" Style="{StaticResource GazeToggleButton}" IsChecked="{Binding IsHit}" Background="{Binding Track.Source.Brush}" Height="79" Width="79" BorderThickness="1" BorderBrush="Black"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Rectangle Fill="#FF666666" Width="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0"/>
+
+                            <Button Content="&#xE10B;" Command="{Binding SetAll}" Style="{StaticResource GazeButton}" Margin="5" Background="Magenta" Visibility="Collapsed" Grid.ColumnSpan="1" Grid.Column="1"/>
+                            <Button Content="&#xE1CD;" Command="{Binding DuplicateFirst}" Style="{StaticResource GazeButton}" Margin="5" Background="Cyan" Visibility="Collapsed" Grid.ColumnSpan="1" Grid.Column="1"/>
+                            <Button Command="{Binding ResetAll}" Style="{StaticResource GazeButton}" Background="#1A1A1A" Grid.ColumnSpan="1" Grid.Column="1" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Width="79" Height="79" Margin="36,1">
+                                <Path Fill="#ffffffff" Data="F1 M 21.181,3.335 L 17.848,0.000 L 10.602,7.245 L 3.407,0.050 L 0.070,3.385 L 7.265,10.581 L 0.000,17.845 L 3.336,21.181 L 10.600,13.917 L 17.747,21.063 L 21.083,17.726 L 13.937,10.580 L 21.181,3.335 Z" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+
+        <Grid Grid.Row="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+                <ColumnDefinition Width="16.44*"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource GazeButton}" Click="SettingsButton_OnClick" Background="#FF333333" Margin="5" Grid.Column="0" Content="&#xe115;" FontFamily="Segoe UI Symbol" FontSize="48" Foreground="White" />
+        </Grid>
+
+    </Grid>
+</Window>

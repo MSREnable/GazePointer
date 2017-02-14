@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazePointerTest", "GazePointerTest\GazePointerTest.csproj", "{14915E2B-5D94-4627-B9B0-7A78489A497D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Filters", "..\..\lib\Microsoft.HandsFree.Filters\Microsoft.HandsFree.Filters.csproj", "{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Mouse", "..\..\lib\Microsoft.HandsFree.Mouse\Microsoft.HandsFree.Mouse.csproj", "{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.MVVM", "..\..\lib\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj", "{3D58B016-B156-4401-8785-4E0182655EDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Sensors", "..\..\lib\Microsoft.HandsFree.Sensors\Microsoft.HandsFree.Sensors.csproj", "{48E96990-1267-477A-8AD3-E4972F3C8945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Settings", "..\..\lib\Microsoft.HandsFree.Settings\Microsoft.HandsFree.Settings.csproj", "{C738745B-1AF0-4D65-BEA7-082FB61864EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Win32", "..\..\lib\Microsoft.HandsFree.Win32\Microsoft.HandsFree.Win32.csproj", "{0E8C0348-E61B-4209-9D2F-C57E87910675}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14915E2B-5D94-4627-B9B0-7A78489A497D}.Debug|x64.ActiveCfg = Debug|x64
+		{14915E2B-5D94-4627-B9B0-7A78489A497D}.Debug|x64.Build.0 = Debug|x64
+		{14915E2B-5D94-4627-B9B0-7A78489A497D}.Release|x64.ActiveCfg = Release|x64
+		{14915E2B-5D94-4627-B9B0-7A78489A497D}.Release|x64.Build.0 = Release|x64
+		{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}.Debug|x64.ActiveCfg = Debug|x64
+		{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}.Debug|x64.Build.0 = Debug|x64
+		{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}.Release|x64.ActiveCfg = Release|x64
+		{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}.Release|x64.Build.0 = Release|x64
+		{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}.Debug|x64.ActiveCfg = Debug|x64
+		{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}.Debug|x64.Build.0 = Debug|x64
+		{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}.Release|x64.ActiveCfg = Release|x64
+		{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}.Release|x64.Build.0 = Release|x64
+		{3D58B016-B156-4401-8785-4E0182655EDE}.Debug|x64.ActiveCfg = Debug|x64
+		{3D58B016-B156-4401-8785-4E0182655EDE}.Debug|x64.Build.0 = Debug|x64
+		{3D58B016-B156-4401-8785-4E0182655EDE}.Release|x64.ActiveCfg = Release|x64
+		{3D58B016-B156-4401-8785-4E0182655EDE}.Release|x64.Build.0 = Release|x64
+		{48E96990-1267-477A-8AD3-E4972F3C8945}.Debug|x64.ActiveCfg = Debug|x64
+		{48E96990-1267-477A-8AD3-E4972F3C8945}.Debug|x64.Build.0 = Debug|x64
+		{48E96990-1267-477A-8AD3-E4972F3C8945}.Release|x64.ActiveCfg = Release|x64
+		{48E96990-1267-477A-8AD3-E4972F3C8945}.Release|x64.Build.0 = Release|x64
+		{C738745B-1AF0-4D65-BEA7-082FB61864EC}.Debug|x64.ActiveCfg = Debug|x64
+		{C738745B-1AF0-4D65-BEA7-082FB61864EC}.Debug|x64.Build.0 = Debug|x64
+		{C738745B-1AF0-4D65-BEA7-082FB61864EC}.Release|x64.ActiveCfg = Release|x64
+		{C738745B-1AF0-4D65-BEA7-082FB61864EC}.Release|x64.Build.0 = Release|x64
+		{0E8C0348-E61B-4209-9D2F-C57E87910675}.Debug|x64.ActiveCfg = Debug|x64
+		{0E8C0348-E61B-4209-9D2F-C57E87910675}.Debug|x64.Build.0 = Debug|x64
+		{0E8C0348-E61B-4209-9D2F-C57E87910675}.Release|x64.ActiveCfg = Release|x64
+		{0E8C0348-E61B-4209-9D2F-C57E87910675}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
