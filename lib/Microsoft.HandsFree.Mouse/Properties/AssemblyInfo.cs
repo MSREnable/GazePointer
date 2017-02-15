@@ -6,6 +6,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Microsoft.HandsFree.Mouse")]
 [assembly: AssemblyCopyright("Copyright © 2015")]
 
-[assembly: AssemblyVersion("0.0.0.0")]
-[assembly: AssemblyFileVersion("0.0.0.0")]
-[assembly: AssemblyInformationalVersion("private")]
+[assembly: AssemblyVersion("1.0.3")]
+[assembly: AssemblyFileVersion("1.0.3")]
