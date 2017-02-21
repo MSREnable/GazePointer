@@ -1,0 +1,74 @@
+os: Visual Studio 2015
+
+# fetch repository as zip archive
+shallow_clone: true
+
+environment:
+  publisher: Microsoft
+  project_name: GazePointer
+  config: Debug
+  app_name: GazePointerTest
+  app_sln: apps\GazePointerTest\GazePointerTest.sln
+  app_path: apps\GazePointerTest\GazePointerTest
+  app_title: GazePointerTest
+
+init:
+  - ps: $timestamps = @()
+  - ps: $timestamps += "$(Get-Date -Format o) - Begin init"
+  - ps: Update-AppveyorBuild -Version "1.0.$env:appveyor_build_number"
+  - ps: $timestamps += "$(Get-Date -Format o) - End init"
+
+install:
+  - ps: $timestamps += "$(Get-Date -Format o) - Begin install"
+
+before_build:
+  - ps: $timestamps += "$(Get-Date -Format o) - Begin before_build"
+  - ps: new-item -ItemType directory -Path source
+  - ps: $table = get-childitem . -directory -exclude @("packages","external", "source")
+  - ps: copy-item $table source -force -recurse
+  - ps: $timestamps += "$(Get-Date -Format o) - Restore $env:app_sln"
+  - ps: nuget restore "$env:app_sln"
+  - ps: $timestamps += "$(Get-Date -Format o) - End before_build"
+
+build:
+  project: $(project_name).proj
+
+cache:
+  - packages -> **\packages.config
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.cs
+  assembly_version: $(appveyor_build_version)
+  assembly_file_version: $(appveyor_build_version)
+  assembly_informational_version: $(appveyor_repo_branch)
+
+configuration:
+  - Release
+
+after_build:
+  - ps: $timestamps += "$(Get-Date -Format o) - Begin after_build"
+  - ps: $timestamps += "$(Get-Date -Format o) - End after_build"
+
+artifacts:
+  - path: publish
+    name: $(project_name)-publish-$(appveyor_build_version)
+  - path: source
+    name: $(project_name)-source-$(appveyor_build_version)
+  - path: install
+    name: $(project_name)-install-$(appveyor_build_version)
+
+before_deploy:
+  - ps: $timestamps += "$(Get-Date -Format o) - before_deploy"
+
+after_deploy:
+  - ps: $timestamps += "$(Get-Date -Format o) - after_deploy"
+  - ps: foreach ($timestamp in $timestamps) { Write-Output "$timestamp" }
+
+notifications:
+  - provider: Email
+    to:
+      - eyegazebuild@microsoft.com
+    subject: 'Build {{branch}}: {{status}}'
+
+test: off
