@@ -37,7 +37,7 @@ namespace Microsoft.HandsFree.Sensors
 
             if (!gazeDataProvider.Initialize())
             {
-                gazeDataProvider = new MouseSdk();
+                gazeDataProvider = new NullSdk();
                 var ret = gazeDataProvider.Initialize();
                 Debug.Assert(ret);               
             }
