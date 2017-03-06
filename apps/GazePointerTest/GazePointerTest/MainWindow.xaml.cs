@@ -1,7 +1,6 @@
 ﻿using Microsoft.HandsFree.Mouse;
 using System.ComponentModel;
 using System.Windows;
-using Microsoft.HandsFree.Music;
 using Microsoft.HandsFree.MVVM;
 
 namespace GazePointerTest

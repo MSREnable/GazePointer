@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Windows;
 using Microsoft.HandsFree.Sensors;
 
 namespace Microsoft.HandsFree.Filters

@@ -3,8 +3,6 @@ namespace Microsoft.HandsFree.Mouse
     using System;
     using System.Windows;
     using System.Windows.Media;
-    using System.Windows.Shapes;
-    using System.Windows.Interop;
 
     /// <summary>
     /// A container element which has a cursor drawn upon.
