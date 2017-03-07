@@ -1,6 +1,4 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Microsoft.HandsFree.Win32")]
 [assembly: AssemblyProduct("Microsoft.HandsFree.Win32")]

@@ -2,7 +2,6 @@ namespace Microsoft.HandsFree.Win32
 {
     using System;
     using System.Runtime.InteropServices;
-    using System.Text;
 
     public static class Gdi32
     {
