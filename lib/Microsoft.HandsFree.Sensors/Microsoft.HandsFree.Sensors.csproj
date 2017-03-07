@@ -32,6 +32,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.HandsFree.Sensors.Interop.EyeTech, Version=1.0.6206.39060, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\external\EyeTechSDK\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -74,6 +78,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="TobiiEyeXSdk.cs" />
     <Compile Include="TobiiGazeSdk.cs" />
+    <Compile Include="EyeTechSdk.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\external\Microsoft.VC110.CRT.x64\msvcp110.dll">
@@ -95,6 +100,12 @@
     <Content Include="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\TobiiGazeCore64.dll">
       <Link>TobiiGazeCore64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\EyeTechSDK\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\external\QuickLink2_x86_x64_2.7.3.2\bin64\QuickLink2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

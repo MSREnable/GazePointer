@@ -14,7 +14,6 @@ namespace Microsoft.HandsFree.Sensors
         Sensors _sensor = Sensors.TobiiEyeXSDK;
 
         // This is not a filter settings. But a feature of the sensor SDK if it supports it
-        // Right now, only the Tobii SDK supports
         [SettingDescription("Use Fixation Stream")]
         public bool UseFixationStream
         {

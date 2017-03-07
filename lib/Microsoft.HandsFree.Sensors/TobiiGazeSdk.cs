@@ -14,24 +14,49 @@ namespace Microsoft.HandsFree.Sensors
         private DispatcherTimer _trackerEnumTimer;
         private IEyeTracker _eyeTracker = null;
         private Thread _trackingThread = null;
+        private bool _initialized;
 
         public event EventHandler<GazeEventArgs> GazeEvent;
 
         public Sensors Sensor { get { return Sensors.TobiiGazeSDK; } }
 
+        public bool Detect()
+        {
+            Uri url = new EyeTrackerCoreLibrary().GetConnectedEyeTracker();
+            if (url == null)
+            {
+                return false;
+            }
+
+            var eyeTracker = new EyeTracker(url);
+            if (eyeTracker == null)
+            {
+                return false;
+            }
+
+            eyeTracker.Dispose();
+            return true;
+        }
+
         public bool Initialize()
         {
+            if (_initialized)
+            {
+                return true;
+            }
+
             _trackerEnumTimer = new DispatcherTimer();
             _trackerEnumTimer.Tick += new EventHandler(TrackerEnumTimer_Tick);
             _trackerEnumTimer.Interval = new TimeSpan(0, 0, 5);
 
-            if (!InitializeEyeTracker())
+            _initialized = InitializeEyeTracker();
+            if (!_initialized)
             {
-                // if we can't find the tracker, poll every five seconds looking for the timer
+                // if we can't find the tracker, poll every five seconds looking for the tracker
                 _trackerEnumTimer.Start();
-                return false;
             }
-            return true;
+
+            return _initialized;
         }
 
         public void Terminate()
@@ -143,7 +168,8 @@ namespace Microsoft.HandsFree.Sensors
 
         private void TrackerEnumTimer_Tick(object sender, EventArgs e)
         {
-            if (InitializeEyeTracker())
+            _initialized = InitializeEyeTracker();
+            if (_initialized)
             {
                 _trackerEnumTimer.Stop();
             }

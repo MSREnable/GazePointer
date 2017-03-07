@@ -59,6 +59,7 @@ namespace Microsoft.HandsFree.Sensors
     {
         event EventHandler<GazeEventArgs> GazeEvent;
         Sensors Sensor { get; }
+        bool Detect();
         bool Initialize();
         void Terminate();
 

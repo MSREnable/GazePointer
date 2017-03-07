@@ -1,0 +1,92 @@
+2.7.3.2 - 15.6.3.59
+------------------------------------------------------------
+- Bug Fix: On AEye based devices, the 'Calibrated' member of the of the eye data was always false, even when a valid calibration was applied.
+- Bug Fix: Under certain conditions when using AEye based devices and unloading the library, The system could hang for several seconds while trying to clean up threads.
+- Bug Fix: On AEye based devices, when switching eye tracking modes (left eye only, right eye only, or both) and then calibrating and applying the calibration to a device that already had a calibration with a different tracking mode would cause the calibration to become corrupted and result in invalid gaze data.
+- Feature: Added automatic device password caching when a correct device password is entered.
+
+
+2.7.3.1 - 15.4.7.33
+------------------------------------------------------------
+- Bug Fix: Cleaned up some minor memory leaks.
+- Bug Fix: After finalizing a calibration the scores for the targets were not able to be retrieved.
+- Bug Fix: When starting the device the device settings used to revert to default values. This would require the settings to be re-imported after the device was started.
+- Bug Fix: When an AEye based device was disconnected and then reconnected after it was started then the settings and calibration would revert to default values for that device when reconnected.
+- Bug Fix: For non-AEye based devices the output distance was always zero.
+- Bug Fix: For AEye based devices, when calling QLDevice_Enumerate two or more times no devices would be enumerated. They would only be enumerated the first time.
+- Bug Fix: AEye based devices used to not be able to reconnect after the computer resumed from sleeping/hibernating.
+- Bug Fix: With AEye based devices there was a error that could occur in the driver causing occasional memory exceptions when packets were missed.
+- Feature: Added automatic caching of settings that are imported to a device. These cached settings can be re-imported to a device by calling QLDevice_ImportLastSettings().
+- Feature: Added automatic caching of the last calibration that is applied to a device. The cached calibration can be re-applied to a device by calling QLDevice_ApplyLastCalibration().
+- Feature: Added automatic caching of settings that are imported to the API. These cached settings can be re-imported to the API by calling QLAPI_ImportLastSettings().
+- Improvement: More than one AEye device can be used at once now.
+- Improvement: AEye devices can now be added to and used in device groups.
+
+2.6.3.1 - 14.8.25.60
+------------------------------------------------------------
+- Bug Fix: When getting gaze data from the API without applying a valid calibration first, the Valid member of the QLWeightedGazePoint structure would incorrectly be true.
+- Bug Fix: When the setting QL_SETTING_DEVICE_IMAGE_PROCESSING_EYES_TO_FIND is set to the value QL_DEVICE_EYES_TO_USE_LEFT_OR_RIGHT or QL_DEVICE_EYES_TO_USE_LEFT_AND_RIGHT and a calibration has been applied that only has calibration data for one eye, undefined gaze output can occur for both eyes and the weighted gaze point.
+
+2.6.3.0 - 14.6.18.41
+------------------------------------------------------------
+- Bug Fix: Under certain conditions, the API could hang when loading the API immediately after unloading the API in the same process.
+- Bug Fix: Under certain conditions, automatic calculation of frequency would not happen.
+- Bug Fix: When recalibrating using a container initially created for a 5 point calibration, a 9 point or 16 point calibration could receive an unwanted bias.
+- Bug Fix: Under certain conditions, calibration data was not loaded when calibration file only contained right eye data 
+- Feature: Added support for AEye devices.
+- Feature: Added scale factor to QLFrame Data which indicates the scaling of the returned frame.
+
+2.5.1.0 - 12.7.18.66
+------------------------------------------------------------
+- Bug Fix: Under certain conditions a crash could occur during calibration.
+- Bug Fix: Under certain conditions a crash would occur while explicitly unloading the API.
+- Improvement: Better default settings for certain devices.
+- Improvement: Better internal error handling.
+
+2.5.0.0 - 12.6.14.61
+------------------------------------------------------------
+- Bug Fix: Under certain conditions the device would not track even though the image coming from the device looked good.
+- Bug Fix: When the processing was set to use a single eye a calibration could not be performed.
+- Bug Fix: When the processing was set to use the right eye only, the resulting gaze points for that eye would always be (0,0).
+- Bug Fix: If device settings were set before the device was started then they were overwritten by default values when the device was started.
+- Bug Fix: When switching the processing from dual eyes to single eye, the indicator light on the front of the device for the non processed eye used to stay in the state it was when the switch was made.
+- Bug Fix: Under certain conditions when the eyes were found, the region of interest would snap to either the top or bottom of the image instead of around the eyes.
+- Bug Fix: Under certain conditions some devices would report invalid timestamps.
+- Bug Fix: Some devices were not correctly reporting whether or not they support a given setting.
+- Bug Fix: Frame rates for certain devices were very inconsistent.
+- Feature: New devices do not need password set in order to be used.
+- Feature: Added support for using multiple devices at the same time.
+- Feature: Added the ability to create device groups in order to control multiple devices at the same time.
+- Feature: Added a setting to disable the internal IR lights of the device.
+- Feature: Added an auto bandwidth setting.
+- Feature: Added region of interest information to the QLFrameData structure.
+- Feature: Added current bandwidth information to QLFrameData structure.
+- Feature: Added the device ID of the source device to the QLFrameData structure.
+- Feature: Added the ability to stop all devices with a single function call.
+- Feature: Added a void* settings type.
+- Improvement: Auto gain is now more robust.
+- Improvement: Enhanced the accuracy of 5 point calibrations. 
+- Improvement: Recalibrating a target that has already been calibrated will never make the score worse.
+- Improvement: The API will now auto recover the connection if a device is disconnected from the computer and then reconnected.
+
+2.4.4.0 - 12.1.9.52 (Beta)
+------------------------------------------------------------
+- Bug Fix: Calibration bias reset in a calibration container when a new calibration is performed.
+- Bug Fix: Modified auto gain to reduce gain oscillation.
+- Feature: Added settings for specifying the eye radius.
+- Feature: Added three new gaze point filter methods.
+- Feature: Added eye radius calibration functions.
+- Improvement: Enhance the accuracy of the distance calculation
+
+2.3.2.0 - 11.9.23.16 
+------------------------------------------------------------
+- Bug Fix: Under certain conditions the ROI would not center properly when only one eye was found.
+- Bug Fix: Under certain conditions the ROI would not flip to check for incorrectly classified eyes.
+- Bug Fix: Minor internal bugs fixed.
+- Bug Fix: Disabled internal debugging features that were causing slow performance.
+- Improvement: Internal formatting and comment changes.
+
+
+2.3.1.0 - 11.9.7.14
+------------------------------------------------------------
+- Initial release version.

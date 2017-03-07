@@ -25,7 +25,7 @@ namespace Microsoft.HandsFree.Sensors
         }
         event EventHandler<GazeEventArgs> _gazeEvent;
 
-        public Sensors Sensor { get { return Sensors.Mouse; } }
+        public Sensors Sensor => Sensors.Mouse;
 
         void MouseTick(object sender, EventArgs e)
         {
@@ -51,6 +51,11 @@ namespace Microsoft.HandsFree.Sensors
 
         void IGazeDataProvider.EndAddCalibrationPoint()
         {
+        }
+
+        bool IGazeDataProvider.Detect()
+        {
+            return true;
         }
 
         bool IGazeDataProvider.Initialize()

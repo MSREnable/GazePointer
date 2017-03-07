@@ -22,6 +22,7 @@ namespace Microsoft.HandsFree.Sensors
         private EyeTrackingConfigurationStatus _configurationStatus;
         private SemaphoreSlim _semaphore;
         private readonly Dispatcher _dispatcher = System.Windows.Application.Current.Dispatcher;
+        private bool _initialized;
 
         public Sensors Sensor { get { return Sensors.TobiiEyeXSDK; } }
 
@@ -30,8 +31,18 @@ namespace Microsoft.HandsFree.Sensors
             _useFixationStream = useFixationStream;
         }
 
+        public bool Detect()
+        {
+            return Initialize();
+        }
+
         public bool Initialize()
         {
+            if (_initialized)
+            {
+                return true;
+            }
+
             if (_useFixationStream)
             {
                 _eyeXHost.CreateFixationDataStream(FixationDataMode.Slow).Next += OnFixationPointNext;
@@ -46,7 +57,7 @@ namespace Microsoft.HandsFree.Sensors
             // TODO: Initialize needs to be replaced with an InitializeAsync to void
             // having to do this callback, waiting and semaphore dance.
 
-            var initialized = false;
+            _initialized = false;
 
             var initialSemaphore = new SemaphoreSlim(0);
             var initialCallback = (EventHandler<EngineStateValue<EyeTrackingDeviceStatus>>)((s, e) =>
@@ -57,7 +68,7 @@ namespace Microsoft.HandsFree.Sensors
                     case EyeTrackingDeviceStatus.Initializing:
                     case EyeTrackingDeviceStatus.Tracking:
                     case EyeTrackingDeviceStatus.TrackingPaused:
-                        initialized = true;
+                        _initialized = true;
                         initialSemaphore.Release();
                         break;
 
@@ -72,7 +83,7 @@ namespace Microsoft.HandsFree.Sensors
             initialSemaphore.Wait(1000);
             _eyeXHost.EyeTrackingDeviceStatusChanged -= initialCallback;
 
-            return initialized;
+            return _initialized;
         }
 
         public void BeginAddCalibrationPoint(int x, int y)

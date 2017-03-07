@@ -22,6 +22,11 @@ namespace Microsoft.HandsFree.Sensors
             _logFile = logFile;
         }
 
+        public bool Detect()
+        {
+            return false;
+        }
+
         public bool Initialize()
         {
             if (!File.Exists(_logFile))

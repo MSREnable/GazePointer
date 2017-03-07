@@ -75,6 +75,10 @@ namespace Microsoft.HandsFree.Filters
 
             // determine sampling frequency based on last time stamp
             double samplingFrequency = 1000.0 / (gazeArgs.Timestamp - _lastTimestamp);
+            if (double.IsInfinity(samplingFrequency))
+            {
+                samplingFrequency = 60;
+            }
             _lastTimestamp = gazeArgs.Timestamp;
 
             // calculate change in distance...

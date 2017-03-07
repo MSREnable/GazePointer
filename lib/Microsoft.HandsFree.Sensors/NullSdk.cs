@@ -7,7 +7,7 @@ namespace Microsoft.HandsFree.Sensors
     {
         public event EventHandler<GazeEventArgs> GazeEvent { add { } remove { } }
 
-        public Sensors Sensor { get { return Sensors.None; } }
+        public Sensors Sensor => Sensors.None;
 
         public void BeginAddCalibrationPoint(int x, int y)
         {
@@ -15,6 +15,11 @@ namespace Microsoft.HandsFree.Sensors
 
         public void EndAddCalibrationPoint()
         {
+        }
+
+        public bool Detect()
+        {
+            return false;
         }
 
         public bool Initialize()

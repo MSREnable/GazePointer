@@ -1,0 +1,3 @@
+Note1: This is the release version of the lib\Microsoft.HandsFree.Sensors.Interop.EyeTech\Microsoft.HandsFree.Sensors.Interop.EyeTech.sln. The release version is used because the debug version would require debug VC++ runtimes. Since most machines do not have debug runtimes, loading the debug dll would fail. Most machines have the VC++ release runtimes installed, so everything works.
+
+Note2: Given note1, there is now a dependency on the VC++ runtimes. We should either add them to our install dependencies, or swap out to use the QuickLink2DotNet interop project.

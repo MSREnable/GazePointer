@@ -109,6 +109,7 @@ namespace Microsoft.HandsFree.Mouse
             if (settings == null)
             {
                 settings = new Settings();
+                settings.Sensor.Sensor = GazeDataProvider.Detect();
             }
 
             if (_gazeDataProvider == null)

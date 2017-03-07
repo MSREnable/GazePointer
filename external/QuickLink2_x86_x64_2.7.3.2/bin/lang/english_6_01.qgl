@@ -1,0 +1,279 @@
+<Program NAME="Quick Glance" VERSION="6.01">
+    <dlg ID="Eye_Tools_Help" TEXT="Information">
+        <ctrl ID="Blink_Click" TEXT="Blink Click - This allows you to perform a click by closing your eyes for a pre-set amount of time.  This time can be adjusted in the Clicking tab of the Settings window. When no clicking method is selected, you can blink click on this button to activate it. To disable blink clicking, click this button again.
+
+This button can not be selected if Dwell Click is active."/>
+        <ctrl ID="Calibration_Update" TEXT="Calibration Update - This will open the Calibration update window. Use the Calibration Update when the accuracy of the eye tracker has drifted."/>
+        <ctrl ID="Dwell_Click" TEXT="Dwell Click - This allows you to perform a click by looking at a fixed point on the screen for a pre-set amount of time. This time can be adjusted in the Clicking tab of the Settings window. When no clicking method is selected, you can dwell click on this button to activate it. To disable dwell clicking, click this button again. After clicking once, you must look away before you can click in the same spot again.
+
+This button can not be selected if Blink Click is active."/>
+		<ctrl ID="Help" TEXT="Click on an item in the Eye Tools bar to get information regarding its use. To close the information area, click the help button again."/>
+        <ctrl ID="Home" TEXT="Home - This will take you back to the home screen of Quick Glance."/>
+        <ctrl ID="Image" TEXT="Display Area - This area displays either a live video image or the eye position indicators. This depends on the state of the Enable Live Image option in the Toolbar tab of the Settings window.  The user’s eyes (or the eye position indicators) must be visible in the window for Quick Glance to track properly. 
+
+Clicking on this area causes the Eye Tool buttons to appear or disappear."/>
+        <ctrl ID="Left_Double_Click" TEXT="Left Double Click - This performs a normal double click.
+
+First click this button, then click where you would like to perform the double click. To cancel this action click this button again."/>
+        <ctrl ID="Left_Drag" TEXT="Left Drag - This performs a normal click and drag.
+
+First click this button, then click what you would like to drag. The item being dragged will follow your gaze until another click is performed. Once you have the item at the desired location, perform another click to end the drag. To cancel this action click this button again."/>
+        <ctrl ID="Left_Drag_Left_Click" TEXT="Left Select - This performs a click and drag. It is different than a normal left drag in that it does not drag in real-time with the gaze. Instead, once the final drag point is clicked, it will do a drag in a straight line from the initial drag point to the final drag point. This is used quite often for selecting groups of icons or for drawing straight lines in drawing programs.
+
+First click this button, then click where you would like the drag to start. Finaly click where you would like the drag to end. To cancel the action, click this button again."/>
+        <ctrl ID="Minimize" TEXT="Minimize - This will minimize Eye Tools to the task bar."/>
+        <ctrl ID="Move_Left_Right" TEXT="Move Right / Left - This will toggle the position of Eye Tools from left to right or right to left."/>
+        <ctrl ID="Move_Up_Down" TEXT="Move Up / Down - This will toggle the position of Eye Tools from top to bottom or bottom to top."/>
+        <ctrl ID="Play_Pause" TEXT="Play / Pause - If the cursor is under eye control then this will pause the eye control. While the eye control is paused, the cursor will not move with your gaze and blink/dwell clicks have no effect. To unpause eye control, look at this button and click. Normal eye control operation will then be restored."/>
+        <ctrl ID="Processor_Load" TEXT="Processor Load - This bar gives a rough measure of how much CPU power is being used by Quick Glance.  This is useful for determining how to adjust the Bandwidth and Image Height in the Camera tab of the Settings window. 
+
+Quick Glance will yield to other applications when they temporarily need most of the computing resources.  It is normal for the bar graph to indicate 100% at these times. 
+
+If you would like to regulate the amount of CPU power that is being used by Quick Glance, you can change the Bandwidth (%) in the Camera tab of the Settings window."/>
+        <ctrl ID="Right_Click" TEXT="Right Click - This performs a normal right click.
+
+First click this button, then click where you would like to perform a right click.  To cancel this action click this button again."/>
+        <ctrl ID="Right_Drag_Right_Click" TEXT="Right Select - This performs a right click and drag. It is different than the left select in that it uses the right mouse button instead of the left one. Once the final drag point is clicked, it will do a drag in a straight line from the initial drag point to the final drag point and then display the contextual menu associated with that point. This is used quite often for selecting groups of icons and then choosing an action from the contextual menu associated with those items.
+
+First click this button, then click where you would like the drag to start. Finaly click where you would like the drag to end. To cancel the action, click this button again."/>
+        <ctrl ID="Settings" TEXT="Settings - This opens the Settings window. The Settings window contains all the options available in Quick Glance."/>
+        <ctrl ID="Zoom" TEXT="Zoom - This facilitates clicking on small objects or for doing precision work.
+
+After clicking the zoom button, a rectangle outline will appear as the cursor. Move the rectangle to the location where you wish to zoom and then click. A new zoomed-in window will appear. You can now place the cursor more precisely within the zoom window and then click.  As soon as a click is done within the zoom window it will disappear and a click will be performed in the coresponding position on the actual screen.
+
+To combine the zoom with the other mouse functions, first click on the desired mouse function, and then click on the zoom button.  When you make the final click in the zoom window, the selected mouse function will be performed.
+
+To get rid of the zoomed-in window without clicking on it, click anywhere else on the screen."/>
+        <ctrl ID="Zoom_Lock" TEXT="Zoom Lock - This causes a zoomed-in window to apear with every blink/dwell click. It is mostly used when doing very precise work or when accuracy is low."/>
+    </dlg>
+        <ctrl ID="IDC_btnReconfigureSumix" TEXT="Reconfigure..."/>
+    <dlg ID="IDD_AboutBox" TEXT="About">
+        <ctrl ID="IDC_OK" TEXT="OK"/>
+        <ctrl ID="IDC_txtSN" TEXT="Serial Number:"/>
+    </dlg>
+    <dlg ID="IDD_CalError" TEXT="Calibration Error">
+        <ctrl ID="IDC_QuitCalibration" TEXT="Quit Calibration"/>
+        <ctrl ID="IDC_SaveImage" TEXT="Save Image"/>
+        <ctrl ID="IDC_TryAgain" TEXT="Try Again"/>
+        <ctrl ID="IDC_ViewFullSize1" TEXT="View Full Size"/>
+        <ctrl ID="IDC_ViewFullSize2" TEXT="View Full Size"/>
+        <ctrl ID="IDC_txtErrorImage" TEXT="Error Image"/>
+        <ctrl ID="IDC_txtLiveImage" TEXT="Live Image"/>
+    </dlg>
+    <dlg ID="IDD_CalScoring" TEXT="Calibration Scoring">
+        <ctrl ID="IDC_Cancel" TEXT="Cancel"/>
+        <ctrl ID="IDC_Done" TEXT="Done"/>
+        <ctrl ID="IDC_ImproveScore" TEXT="Try to Improve Score"/>
+        <ctrl ID="IDC_grpCurrent" TEXT="Current"/>
+        <ctrl ID="IDC_grpNew" TEXT="New"/>
+        <ctrl ID="IDC_grpScoring" TEXT="Scoring Guidelines"/>
+        <ctrl ID="IDC_txtExcelent" TEXT="Excellent !"/>
+        <ctrl ID="IDC_txtFair" TEXT="Fair"/>
+        <ctrl ID="IDC_txtGood" TEXT="Good"/>
+        <ctrl ID="IDC_txtPoor" TEXT="Poor"/>
+        <ctrl ID="IDC_txtScoreBestNew" TEXT="Score:"/>
+        <ctrl ID="IDC_txtScoreCurrent" TEXT="Score:"/>
+    </dlg>
+    <dlg ID="IDD_CalUpdate" TEXT="Calibration Update">
+        <ctrl ID="IDC_MyOk" TEXT="OK"/>
+        <ctrl ID="IDC_grpInstructions" TEXT="Instructions:"/>
+        <ctrl ID="IDC_txtInstructions1" TEXT="- Stare at the center of the target.  Allow the cursor to drift wherever it will.  Do not try to force it to the center of the target."/>
+        <ctrl ID="IDC_txtInstructions2" TEXT="- Click on the &quot;OK&quot; button."/>
+        <ctrl ID="IDC_txtInstructions3" TEXT="- Perform a mouse click while staring at the center of the target. You may repeat this step as often as you wish."/>
+    </dlg>
+    <dlg ID="IDD_ConfigVS" TEXT="Quick Glance - Configure Video Hardware">
+        <ctrl ID="IDC_chkMultipleCameras" TEXT="Use multiple cameras"/>
+        <ctrl ID="IDC_chkOverrideCFOV" TEXT="Manual override"/>
+        <ctrl ID="IDC_cmdDone" TEXT="Done"/>
+        <ctrl ID="IDC_cmdExit" TEXT="Cancel"/>
+        <ctrl ID="IDC_grpAdvanced" TEXT="Advanced:"/>
+        <ctrl ID="IDC_grpComputedFOV" TEXT="Field of View:"/>
+        <ctrl ID="IDC_grpInstructions" TEXT="Instructions:"/>
+		<ctrl ID="IDC_grpPixelDensity" TEXT="Pixel Density:"/>
+        <ctrl ID="IDC_txtDistance" TEXT="3)  Approximate Working Distance:"/>
+        <ctrl ID="IDC_txtHardware" TEXT="1)  Quick Glance Hardware Version:"/>
+        <ctrl ID="IDC_txtHorizontal" TEXT="Horizontal (cm)"/>
+		<ctrl ID="IDC_txtHorizontal2" TEXT="Horizontal (cm)"/>
+        <ctrl ID="IDC_txtHorizontal3" TEXT="Horizontal (pix/cm)"/>
+        <ctrl ID="IDC_txtInstruction1" TEXT="- Please enter information about your Quick Glance hardware below.  You will only need to do this once.  In the future this information will be loaded automatically when Quick Glance is started."/>
+        <ctrl ID="IDC_txtInstruction2" TEXT="- If you need to make changes to this information later, go to &quot;Settings\Configure Video&quot; from the Quick Glance opening screen."/>
+        <ctrl ID="IDC_txtLens" TEXT="2)  Lens:"/>
+        <ctrl ID="IDC_txtOtherCM" TEXT="Other (cm):"/>
+        <ctrl ID="IDC_txtOtherMM" TEXT="Other (mm):"/>
+        <ctrl ID="IDC_txtVertical" TEXT="Vertical (cm)"/>
+		<ctrl ID="IDC_txtVertical2" TEXT="Vertical (cm)"/>
+        <ctrl ID="IDC_txtVertical3" TEXT="Vertical (pix/cm)"/>
+        <ctrl ID="Other_Text" TEXT="    Other..."/>
+    </dlg>
+    <dlg ID="IDD_EnterPasswords" TEXT="Enter Password">
+        <ctrl ID="IDC_cmdExit" TEXT="Exit"/>
+        <ctrl ID="IDC_cmdNext" TEXT="Next"/>
+        <ctrl ID="IDC_txtExplanation" TEXT="*Quick Glance Password can be found on the sticker on the back of the tracking device"/>
+        <ctrl ID="IDC_txtQGPassword" TEXT="Please Enter Your Quick Glance Password:"/>
+        <ctrl ID="IDC_txtSN" TEXT="Your Serial Number Is:"/>
+        <ctrl ID="IDC_txtSWV" TEXT="Your Software Version Is:"/>
+    </dlg>
+    <dlg ID="IDD_Error2" TEXT="Quick Glance Error">
+        <ctrl ID="IDC_Exit" TEXT="Exit"/>
+    </dlg>
+    <dlg ID="IDD_ErrorReadingSN" TEXT="Error Reading Serial Number">
+        <ctrl ID="IDC_txt3" TEXT="Verify that the camera&apos;s power LED is on."/>
+        <ctrl ID="IDC_txt4" TEXT="Verify that the data cable is securely connected to the camera and the computer."/>
+        <ctrl ID="IDC_txt5" TEXT="If the LED is on and the cable is connected, you may need to reinstall the camera driver. See the user&apos;s manual for details."/>
+        <ctrl ID="IDOK" TEXT="OK"/>
+    </dlg>
+	<dlg ID="IDD_Exit" TEXT="Exit?">
+		<ctrl ID="IDCANCEL" TEXT="No"/>
+		<ctrl ID="IDC_txtExit" TEXT="Would you like to exit Quick Glance?"/>
+		<ctrl ID="IDOK" TEXT="Yes"/>
+	</dlg>
+    <dlg ID="IDD_EyeTracker" TEXT="Quick Glance">
+		<ctrl ID="IDC_Calibrate" TEXT="Calibrate"/>
+        <ctrl ID="IDC_Exit" TEXT="Exit"/>
+        <ctrl ID="IDC_EyeTools" TEXT="Eye Tools"/>
+        <ctrl ID="IDC_Setup" TEXT="Settings"/>
+        <ctrl ID="IDC_ViewFullSize" TEXT="View Full Size"/>
+    </dlg>
+	<dlg ID="IDD_SettingsPage_Calibration" TEXT="Calibration">
+		<ctrl ID="CAL_STYLE_16_POINT" TEXT="16 Point"/>
+		<ctrl ID="CAL_STYLE_5_POINT" TEXT="5 Point"/>
+		<ctrl ID="CAL_STYLE_9_POINT" TEXT="9 Point"/>
+		<ctrl ID="IDC_CurrentScoresRightLabel" TEXT="Right:"/>
+		<ctrl ID="IDC_btnCalibrate" TEXT="Calibrate"/>
+		<ctrl ID="IDC_btnCalibrateDistance" TEXT="Set"/>
+		<ctrl ID="IDC_btnViewFullsize" TEXT="View Full Size"/>
+		<ctrl ID="IDC_grpCalibrateDistance" TEXT="Calibrate Distance"/>
+		<ctrl ID="IDC_grpCurrentScores" TEXT="Current Scores"/>
+		<ctrl ID="IDC_grpTargetTime" TEXT="Target Time (sec)"/>
+		<ctrl ID="IDC_txtCurrentScoresLeftLabel" TEXT="Left:"/>
+        <ctrl ID="OutOfRangeMessage" TEXT="The distance entered is outside of the current operating range.  Quick Glance must be restarted to change the operating range.  Click &quot;OK&quot; to restart and reconfigure the User Distance."/>
+	</dlg>
+	<dlg ID="IDD_SettingsPage_Camera" TEXT="Camera">
+		<ctrl ID="CAM_GAIN_METHOD_AUTO" TEXT="Auto"/>
+		<ctrl ID="CAM_GAIN_METHOD_MANUAL" TEXT="Manual"/>
+		<ctrl ID="ConfigVidMessage" TEXT="This will cause Quick Glance to close. The next time Quick Glance is started the following options will be able to be configured:
+	- Hardware Version
+	- Lens Size
+	- User Distance"/>
+		<ctrl ID="IDC_btnReconfigure" TEXT="Reconfigure..."/>
+		<ctrl ID="IDC_grpConfiguration" TEXT="Configuration"/>
+		<ctrl ID="IDC_grpFieldOfView" TEXT="Field of View (cm)"/>
+		<ctrl ID="IDC_grpGain" TEXT="Gain"/>
+		<ctrl ID="IDC_grpPixelDensity" TEXT="Pixel Density (pix/cm)"/>
+		<ctrl ID="IDC_grpSpeed" TEXT="Speed"/>
+		<ctrl ID="IDC_txtBandwidthLabel" TEXT="Bandwidth (%)"/>
+		<ctrl ID="IDC_txtFieldOfViewXLabel" TEXT="Horizontal:"/>
+		<ctrl ID="IDC_txtFieldOfViewYLabel" TEXT="Vertical:"/>
+		<ctrl ID="IDC_txtPixelDensityXLabel" TEXT="Horizontal:"/>
+		<ctrl ID="IDC_txtPixelDensityYLabel" TEXT="Vertical:"/>
+		<ctrl ID="IDC_txtROIHeightLabel" TEXT="Image Height (%)"/>
+		<ctrl ID="IDC_txtStatusDistanceLabel" TEXT="Operating Range:"/>
+		<ctrl ID="IDC_txtStatusFPSLabel" TEXT="Frame Rate:"/>
+		<ctrl ID="IDC_txtStatusLensLabel" TEXT="Lens:"/>
+		<ctrl ID="IDC_txtStatusVersionLabel" TEXT="Version:"/>
+	</dlg>
+	<dlg ID="IDD_SettingsPage_Clicking" TEXT="Clicking">
+		<ctrl ID="IDC_chkAudibleFeedback" TEXT="Audible Feedback"/>
+		<ctrl ID="IDC_chkBlinkBothEyesRequired" TEXT="Both Eyes Required"/>
+		<ctrl ID="IDC_chkBlinkSecondaryTime" TEXT="Double Click (sec)"/>
+		<ctrl ID="IDC_grpBlink" TEXT="Blink"/>
+		<ctrl ID="IDC_grpClickDelay" TEXT="Click Delay (sec)"/>
+		<ctrl ID="IDC_grpDwell" TEXT="Dwell"/>
+		<ctrl ID="IDC_grpZoomFactor" TEXT="Zoom Factor"/>
+		<ctrl ID="IDC_txtBlinkCancelTimeLabel" TEXT="Cancel Time (sec)"/>
+		<ctrl ID="IDC_txtBlinkPrimaryTimeLabel" TEXT="Single Click (sec)"/>
+		<ctrl ID="IDC_txtDwellAreaLabel" TEXT="Area (mm)"/>
+		<ctrl ID="IDC_txtDwellTimeLabel" TEXT="Time (sec)"/>
+	</dlg>
+  <dlg ID="IDD_SettingsPage_ETLabs" TEXT="ET Labs">
+    <ctrl ID="IDC_FullFrameFreqTitle" TEXT="Full Frame Bandwidth:"/>
+    <ctrl ID="IDC_QGFPSTitle" TEXT="Software FPS:"/>
+    <ctrl ID="IDC_TrackingFreqTitle" TEXT="Tracking Bandwidth:"/>
+    <ctrl ID="IDC_cameraFPSTitle" TEXT="Camera FPS:"/>
+    <ctrl ID="IDC_chkAddProcessing" TEXT="Additional Processing"/>
+    <ctrl ID="IDC_eyeFoundTitle" TEXT="Eye Detection %:"/>
+    <ctrl ID="IDC_finePupilPerTitle" TEXT="Fine Pupil Measurement %:"/>
+    <ctrl ID="IDC_grpBeta" TEXT="Enable Beta Algorithms"/>
+    <ctrl ID="IDC_grpDebugInfo" TEXT="Performance"/>
+    <ctrl ID="IDC_grpStats" TEXT="Statistics"/>
+    <ctrl ID="IDC_imgProcessingTitle" TEXT="Image Processing:"/>
+    <ctrl ID="IDC_stdDevNumTitle" TEXT="Number of Samples:"/>
+    <ctrl ID="IDC_stdDevTitle" TEXT="Standard Deviation:"/>
+  </dlg>
+  <dlg ID="IDD_SettingsPage_Processing" TEXT="Processing">
+		<ctrl ID="EYES_TO_PROC_DUAL_LEFT_AND_RIGHT" TEXT="Left and Right"/>
+		<ctrl ID="EYES_TO_PROC_DUAL_LEFT_OR_RIGHT" TEXT="Left and/or Right"/>
+		<ctrl ID="EYES_TO_PROC_SINGLE_LEFT" TEXT="Left"/>
+		<ctrl ID="EYES_TO_PROC_SINGLE_RIGHT" TEXT="Right"/>
+		<ctrl ID="IDC_btnOpenImage" TEXT="Open Image"/>
+		<ctrl ID="IDC_btnSaveImage" TEXT="Save Image"/>
+		<ctrl ID="IDC_chkEnableClickProcessing" TEXT="Enable Click Processing"/>
+		<ctrl ID="IDC_chkEnableCursorMovement" TEXT="Enable Cursor Movement"/>
+		<ctrl ID="IDC_chkEnableImageCapture" TEXT="Enable Image Capture"/>
+		<ctrl ID="IDC_chkEnableImageDisplay" TEXT="Enable Image Display"/>
+		<ctrl ID="IDC_chkEnableImageProcessing" TEXT="Enable Image Processing"/>
+		<ctrl ID="IDC_grpCursorMovement" TEXT="Cursor Movement"/>
+		<ctrl ID="IDC_grpMethod" TEXT="Method"/>
+		<ctrl ID="IDC_grpPriority" TEXT="Priority"/>
+		<ctrl ID="IDC_txtCursorStabilityLabel" TEXT="Stability"/>
+        <ctrl ID="QL_DEVICE_GAZE_POINT_FILTER_MEDIAN_TIME" TEXT="Legacy"/>
+        <ctrl ID="QL_DEVICE_GAZE_POINT_FILTER_NONE" TEXT="No Filtering"/>
+        <ctrl ID="QL_DEVICE_GAZE_POINT_FILTER_WEIGHTED_PREVIOUS_FRAME" TEXT="Smart"/>
+	</dlg>
+    <dlg ID="IDD_SettingsPage_Sumix_Camera" TEXT="Camera">
+        <ctrl ID="BinningChangedMessage" TEXT="Quick Glance must be restarted to change the binning.  The new binning value will be applied when Quick Glance is restarted."/>
+        <ctrl ID="CONFIG_MOUSE_INPUT" TEXT="Mouse Input"/>
+        <ctrl ID="CONFIG_OTHER" TEXT="Other"/>
+        <ctrl ID="CONFIG_RESEARCH" TEXT="Research"/>
+        <ctrl ID="ConfigVidMessage" TEXT="This will cause Quick Glance to close. The next time Quick Glance is started the following options will be able to be configured:
+	    - Hardware Version
+	    - Lens Size
+	    - User Distance"/>
+        <ctrl ID="IDC_HeightLabel" TEXT="Height"/>
+        <ctrl ID="IDC_grpGain" TEXT="Gain"/>
+        <ctrl ID="IDC_grpGeometrySettings" TEXT="Geometry Settings"/>
+        <ctrl ID="IDC_grpPerformance" TEXT="Performance"/>
+        <ctrl ID="IDC_grpPresetConfiguration" TEXT="Configuration"/>
+        <ctrl ID="IDC_txtStatusFPSLabel" TEXT="Frame Rate:"/>
+        </dlg>
+	<dlg ID="IDD_SettingsPage_Toolbar" TEXT="Toolbar">
+		<ctrl ID="ChangeLangMessage" TEXT="This will cause Quick Glance to close. The next time Quick Glance is started the following option will be able to be configured:
+	- Language"/>
+		<ctrl ID="IDC_btnLanguage" TEXT="Language..."/>
+		<ctrl ID="IDC_grpButtonSizeX" TEXT="Button Width (mm)"/>
+		<ctrl ID="IDC_grpButtonSizeY" TEXT="Button Height (mm)"/>
+		<ctrl ID="IDC_grpDisplayStyle" TEXT="Display Style"/>
+		<ctrl ID="IMG_DISP_LIVE_IMAGE" TEXT="Live Image"/>
+		<ctrl ID="IMG_DISP_PSEUDO_IMAGE" TEXT="Eye Position Indicators"/>
+	</dlg>
+	<dlg ID="IDD_SettingsPage_Users" TEXT="Users">
+    <ctrl ID="IDC_btnAdd" TEXT="Add"/>
+    <ctrl ID="IDC_btnCopy" TEXT="Copy"/>
+		<ctrl ID="IDC_btnDelete" TEXT="Delete"/>
+		<ctrl ID="IDC_btnExport" TEXT="Export Settings..."/>
+		<ctrl ID="IDC_btnImport" TEXT="Import Settings..."/>
+		<ctrl ID="IDC_btnRename" TEXT="Rename"/>
+		<ctrl ID="New_User_Default_Name" TEXT="New User"/>
+		<ctrl ID="User_Name_Already_Exists_Error" TEXT="This user name already exists."/>
+		<ctrl ID="User_Name_Error_Title" TEXT="Name Error"/>
+		<ctrl ID="User_Name_Invalid_Error" TEXT="This is not a valid user name. Only letters, numbers, spaces and the underscore character &apos;_&apos; are allowed."/>
+	</dlg>
+    <dlg ID="Messages" TEXT="">
+        <ctrl ID="CurrentUserPrefix" TEXT="Current User:"/>
+        <ctrl ID="EnableEyeControl" TEXT="Enable Eye Control"/>
+        <ctrl ID="Error" TEXT="ERROR"/>
+        <ctrl ID="InvalidPW" TEXT="Invalid Password"/>
+        <ctrl ID="LiveImageText" TEXT="Live Image:"/>
+        <ctrl ID="Info" TEXT="INFORMATION"/>
+        <ctrl ID="QL2NotFound" TEXT="QuickLink2.dll NOT loaded!
+              
+Click &quot;OK&quot; to continue with QuickLinkAPI.dll."/>
+        <ctrl ID="Warning" TEXT="WARNING"/>
+    </dlg>
+	<dlg ID="Settings" TEXT="Settings">
+		<ctrl ID="IDCANCEL" TEXT="Cancel"/>
+		<ctrl ID="IDC_btnMyOK" TEXT="OK"/>
+		<ctrl ID="IDC_chkAdvancedOptions" TEXT="Advanced Settings"/>
+		<ctrl ID="ID_APPLY_NOW" TEXT="Apply"/>
+	</dlg>
+</Program>
