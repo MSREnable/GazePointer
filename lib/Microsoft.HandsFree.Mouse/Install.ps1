@@ -1,6 +1,6 @@
 param($installPath, $toolsPath, $package, $project)
 
-$dllFiles = "msvcp110.dll","msvcr110.dll","vccorlib110.dll","Tobii.EyeX.Client.dll","TobiiGazeCore64.dll","QuickLink2.dll","Microsoft.HandsFree.Sensors.Interop.EyeTech.dll"
+$dllFiles = "Tobii.EyeX.Client.dll","TobiiGazeCore64.dll","QuickLink2.dll","Microsoft.HandsFree.Sensors.Interop.EyeTech.dll"
 
 foreach ($dllFile in $dllFiles)
 {
