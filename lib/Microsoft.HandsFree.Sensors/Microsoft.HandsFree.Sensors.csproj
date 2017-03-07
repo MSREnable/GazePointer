@@ -76,18 +76,6 @@
     <Compile Include="TobiiGazeSdk.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\msvcp110.dll">
-      <Link>msvcp110.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\msvcr110.dll">
-      <Link>msvcr110.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\external\Microsoft.VC110.CRT.x64\vccorlib110.dll">
-      <Link>vccorlib110.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.dll">
       <Link>Tobii.EyeX.Client.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
