@@ -6,8 +6,8 @@
     <title>$title$</title>
     <authors>MSR Enable</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/MSREnable/EnablingTech</projectUrl>
+    <licenseUrl>https://github.com/MSREnable/GazePointer/blob/master/LICENSE</licenseUrl> 
+    <projectUrl>https://github.com/MSREnable/GazePointer</projectUrl> 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>HandsFree Mouse Library</description>
     <copyright>Copyright 2016</copyright>
