@@ -1,11 +1,7 @@
 using System;
-using System.Configuration;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
 
 namespace Microsoft.HandsFree.Sensors
 {

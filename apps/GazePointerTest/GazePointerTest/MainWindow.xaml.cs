@@ -1,8 +1,8 @@
 ﻿using Microsoft.HandsFree.Mouse;
 using System.ComponentModel;
 using System.Windows;
-using Microsoft.HandsFree.Music;
 using Microsoft.HandsFree.MVVM;
+using System.Windows.Controls;
 
 namespace GazePointerTest
 {
@@ -13,6 +13,10 @@ namespace GazePointerTest
     {
         // ReSharper disable once NotAccessedField.Local
         private GazeMouse _mouse;
+
+        int buttonCount;
+
+        int anotherCount;
 
         public MainWindow()
         {
@@ -66,6 +70,31 @@ namespace GazePointerTest
                 Recalibrate = new RelayCommand(CalibrateAction),
             };
             settingsWindow.ShowDialog();
+        }
+
+        void SetText(TextBlock block, ref int count)
+        {
+            string text;
+
+            count++;
+            switch(count)
+            {
+                default:
+                    text = $"You have pressed this button {count} times";
+                    break;
+            }
+
+            block.Text = text;
+        }
+
+        void OnTestButton(object sender, RoutedEventArgs e)
+        {
+            SetText(ButtonTextBlock, ref buttonCount);
+        }
+
+        private void OnAnotherButton(object sender, RoutedEventArgs e)
+        {
+            SetText(AnotherTextBlock, ref anotherCount);
         }
     }
 }
