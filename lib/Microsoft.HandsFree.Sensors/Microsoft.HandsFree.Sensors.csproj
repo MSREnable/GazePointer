@@ -34,9 +34,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EyeXFramework, Version=1.8.498.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
+    <Reference Include="EyeXFramework, Version=1.8.503.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Tobii.EyeX.Framework.1.8.498\lib\net45\EyeXFramework.dll</HintPath>
+      <HintPath>..\..\packages\Tobii.EyeX.Framework.1.8.503\lib\net45\EyeXFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -47,9 +47,9 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
-    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.8.498.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
+    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.8.503.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Tobii.EyeX.Client.1.8.498\lib\net20\Tobii.EyeX.Client.Net20.dll</HintPath>
+      <HintPath>..\..\packages\Tobii.EyeX.Client.1.8.503\lib\net20\Tobii.EyeX.Client.Net20.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Tobii.Gaze.Core.Net">
@@ -91,12 +91,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\packages\Tobii.EyeX.Client.1.8.498\build\Tobii.EyeX.Client.targets" Condition="Exists('..\..\packages\Tobii.EyeX.Client.1.8.498\build\Tobii.EyeX.Client.targets')" />
+  <Import Project="..\..\packages\Tobii.EyeX.Client.1.8.503\build\Tobii.EyeX.Client.targets" Condition="Exists('..\..\packages\Tobii.EyeX.Client.1.8.503\build\Tobii.EyeX.Client.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Tobii.EyeX.Client.1.8.498\build\Tobii.EyeX.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Tobii.EyeX.Client.1.8.498\build\Tobii.EyeX.Client.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Tobii.EyeX.Client.1.8.503\build\Tobii.EyeX.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Tobii.EyeX.Client.1.8.503\build\Tobii.EyeX.Client.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
