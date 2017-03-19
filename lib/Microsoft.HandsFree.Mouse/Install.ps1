@@ -1,6 +1,6 @@
 param($installPath, $toolsPath, $package, $project)
 
-$dllFiles = "Tobii.EyeX.Client.dll","TobiiGazeCore64.dll"
+$dllFiles = "Tobii.EyeX.Client.dll"
 
 foreach ($dllFile in $dllFiles)
 {

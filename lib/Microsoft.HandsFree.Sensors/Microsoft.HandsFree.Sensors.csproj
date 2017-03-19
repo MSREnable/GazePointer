@@ -44,9 +44,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
-    <Reference Include="Tobii.Gaze.Core.Net">
-      <HintPath>..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\Tobii.Gaze.Core.Net.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -73,15 +70,10 @@
     <Compile Include="Sensors.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TobiiEyeXSdk.cs" />
-    <Compile Include="TobiiGazeSdk.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.dll">
       <Link>Tobii.EyeX.Client.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\TobiiGazeCore64.dll">
-      <Link>TobiiGazeCore64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
