@@ -1,9 +1,9 @@
-namespace Microsoft.HandsFree.Mouse
-{
-    using System;
-    using System.Windows;
-    using System.Windows.Media;
+using System;
+using System.Windows;
+using System.Windows.Media;
 
+namespace Microsoft.HandsFree.GazePointer
+{
     /// <summary>
     /// A container element which has a cursor drawn upon.
     /// Experimentation proved that we needed a custom FrameworkElement that has a cursor drawn using the Visual layer

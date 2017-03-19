@@ -7,8 +7,8 @@
     <ProjectGuid>{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.HandsFree.Mouse</RootNamespace>
-    <AssemblyName>Microsoft.HandsFree.Mouse</AssemblyName>
+    <RootNamespace>Microsoft.HandsFree.GazePointer</RootNamespace>
+    <AssemblyName>Microsoft.HandsFree.GazePointer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="GazeClickParameters.cs" />
     <Compile Include="GazeCursorElement.cs" />
-    <Compile Include="GazeMouse.cs" />
+    <Compile Include="GazePointer.cs" />
     <Compile Include="GazeMouseState.cs" />
     <Compile Include="IdleDetector.cs" />
     <Compile Include="MouseHookListener.cs" />
@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Microsoft.HandsFree.Mouse.nuspec" />
+    <None Include="Microsoft.HandsFree.GazePointer.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

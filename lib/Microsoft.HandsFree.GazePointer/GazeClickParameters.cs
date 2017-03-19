@@ -1,4 +1,4 @@
-namespace Microsoft.HandsFree.Mouse
+namespace Microsoft.HandsFree.GazePointer
 {
     public class GazeClickParameters
     {

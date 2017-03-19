@@ -1,8 +1,8 @@
-﻿using Microsoft.HandsFree.Mouse;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using Microsoft.HandsFree.MVVM;
 using System.Windows.Controls;
+using Microsoft.HandsFree.GazePointer;
 
 namespace GazePointerTest
 {
@@ -12,7 +12,7 @@ namespace GazePointerTest
     public sealed partial class MainWindow
     {
         // ReSharper disable once NotAccessedField.Local
-        private GazeMouse _mouse;
+        private GazePointer _pointer;
 
         int buttonCount;
 
@@ -28,12 +28,12 @@ namespace GazePointerTest
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs cancelEventArgs)
         {
-            GazeMouse.DetachAll();
+            GazePointer.DetachAll();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _mouse = GazeMouse.Attach(this, null, null, AppSettings.Instance.Mouse);
+            _pointer = GazePointer.Attach(this, null, null, AppSettings.Instance.Mouse);
         }
 
         #region Button Handlers
@@ -56,7 +56,7 @@ namespace GazePointerTest
 
         static void CalibrateAction(object o)
         {
-            GazeMouse.LaunchRecalibration();
+            GazePointer.LaunchRecalibration();
         }
         #endregion
 

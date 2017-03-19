@@ -1,9 +1,9 @@
-using Microsoft.HandsFree.Win32;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Microsoft.HandsFree.Win32;
 
-namespace Microsoft.HandsFree.Mouse
+namespace Microsoft.HandsFree.GazePointer
 {
     public class MouseHookListener : IDisposable
     {

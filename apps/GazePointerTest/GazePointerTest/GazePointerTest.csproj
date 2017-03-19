@@ -110,7 +110,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\lib\Microsoft.HandsFree.Mouse\Microsoft.HandsFree.Mouse.csproj">
+    <ProjectReference Include="..\..\..\lib\Microsoft.HandsFree.GazePointer\Microsoft.HandsFree.GazePointer.csproj">
       <Project>{128a0a18-7fc1-4db5-bbec-2174c4c765eb}</Project>
       <Name>Microsoft.HandsFree.Mouse</Name>
     </ProjectReference>
