@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/MSREnable/GazePointer/blob/master/LICENSE</licenseUrl> 
     <projectUrl>https://github.com/MSREnable/GazePointer</projectUrl> 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>HandsFree Mouse Library</description>
+    <description>HandsFree GazePointer Library</description>
     <copyright>Copyright 2016</copyright>
   </metadata>
   <files>

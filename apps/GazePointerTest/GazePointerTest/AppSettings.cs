@@ -1,9 +1,9 @@
-﻿using Microsoft.HandsFree.Mouse;
-using Microsoft.HandsFree.MVVM;
+﻿using Microsoft.HandsFree.MVVM;
 using Microsoft.HandsFree.Settings.Serialization;
 using System;
 using System.Reflection;
 using System.Xml.Serialization;
+using Microsoft.HandsFree.GazePointer;
 
 // TODO: Clarify the use of this class.
 namespace GazePointerTest

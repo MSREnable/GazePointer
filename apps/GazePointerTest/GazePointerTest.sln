@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazePointerTest", "GazePoin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Filters", "..\..\lib\Microsoft.HandsFree.Filters\Microsoft.HandsFree.Filters.csproj", "{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.Mouse", "..\..\lib\Microsoft.HandsFree.Mouse\Microsoft.HandsFree.Mouse.csproj", "{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.GazePointer", "..\..\lib\Microsoft.HandsFree.GazePointer\Microsoft.HandsFree.GazePointer.csproj", "{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HandsFree.MVVM", "..\..\lib\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj", "{3D58B016-B156-4401-8785-4E0182655EDE}"
 EndProject
