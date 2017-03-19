@@ -8,24 +8,24 @@
 // </summary>
 //-----------------------------------------------------------------------
 
-namespace Microsoft.Shell
-{
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Runtime.Remoting;
-    using System.Runtime.Remoting.Channels;
-    using System.Runtime.Remoting.Channels.Ipc;
-    using System.Runtime.Serialization.Formatters;
-    using System.Threading;
-    using System.Windows;
-    using System.Windows.Threading;
-    using System.Security;
-    using System.Runtime.InteropServices;
-    using System.ComponentModel;
-    using HandsFree.Win32;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Channels.Ipc;
+using System.Runtime.Serialization.Formatters;
+using System.Security;
+using System.Threading;
+using System.Windows;
+using System.Windows.Threading;
+using Microsoft.HandsFree.Win32;
 
+namespace GazePointerTest
+{
     internal enum WM
     {
         NULL = 0x0000,

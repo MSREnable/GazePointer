@@ -1,10 +1,6 @@
-using Microsoft.HandsFree.Filters;
-using Microsoft.HandsFree.Sensors;
-using Microsoft.HandsFree.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -14,9 +10,12 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Microsoft.HandsFree.Filters;
+using Microsoft.HandsFree.Sensors;
+using Microsoft.HandsFree.Win32;
 using FormsScreen = System.Windows.Forms.Screen;
 
-namespace Microsoft.HandsFree.Mouse
+namespace Microsoft.HandsFree.GazePointer
 {
     class GazeHistoryItem
     {
@@ -25,12 +24,12 @@ namespace Microsoft.HandsFree.Mouse
         public int Duration;
     }
 
-    public class GazeMouse
+    public class GazePointer
     {
         public const uint DefaultMouseDownDelay = 250;
 
         public delegate GazeClickParameters GetGazeClickParameters(FrameworkElement element);
-        private delegate void GazeMouseDelegate();
+        private delegate void GazePointerDelegate();
 
         public event EventHandler EyesOff;
         public event EventHandler EyesOn;
@@ -52,7 +51,7 @@ namespace Microsoft.HandsFree.Mouse
 
         private const int MinLastMouseTime = 1000;
 
-        private static readonly TraceSource _trace = new TraceSource("GazeMouse", SourceLevels.Information);
+        private static readonly TraceSource _trace = new TraceSource("GazePointer", SourceLevels.Information);
         private static IGazeDataProvider _gazeDataProvider;
         private static readonly LogFilter _logFilter;
 
@@ -88,7 +87,7 @@ namespace Microsoft.HandsFree.Mouse
         long _maxHistoryTime = 1000; // in milliseconds
         readonly IdleDetector _idleDetector = new IdleDetector(TimeSpan.FromSeconds(0.25));
 
-        public static readonly DependencyProperty GazeElementProperty = DependencyProperty.RegisterAttached("GazeElement", typeof(FrameworkElement), typeof(GazeMouse));
+        public static readonly DependencyProperty GazeElementProperty = DependencyProperty.RegisterAttached("GazeElement", typeof(FrameworkElement), typeof(GazePointer));
 
         public static void SetGazeElement(DependencyObject d, FrameworkElement value)
         {
@@ -101,9 +100,9 @@ namespace Microsoft.HandsFree.Mouse
         }
 
         /// <summary>
-        /// Attach GazeMouse behavior to this window
+        /// Attach GazePointer behavior to this window
         /// </summary>
-        public static GazeMouse Attach(Window window, GazeClickParameters clickParams = null, GetGazeClickParameters getGazeClickParams = null,
+        public static GazePointer Attach(Window window, GazeClickParameters clickParams = null, GetGazeClickParameters getGazeClickParams = null,
             Settings settings = null, bool forceMouseCursor = false)
         {
             if (settings == null)
@@ -116,7 +115,7 @@ namespace Microsoft.HandsFree.Mouse
                 _gazeDataProvider = GazeDataProvider.InitializeGazeDataProvider(settings.Sensor);
             }
 
-            return new GazeMouse(
+            return new GazePointer(
                 window,
                 clickParams ?? new GazeClickParameters
                 {
@@ -138,7 +137,7 @@ namespace Microsoft.HandsFree.Mouse
             _gazeDataProvider.Terminate();
         }
 
-        static GazeMouse()
+        static GazePointer()
         {
             _mouseListener = new MouseInputListener();
 
@@ -166,7 +165,7 @@ namespace Microsoft.HandsFree.Mouse
         private IntPtr _hwndMain;
         private bool _windowClosed;
 
-        private GazeMouse(Window window, GazeClickParameters clickParameters, GetGazeClickParameters getGazeClickParameters,
+        private GazePointer(Window window, GazeClickParameters clickParameters, GetGazeClickParameters getGazeClickParameters,
             Settings settings, bool forceMouseCursor)
         {
             // TODO: Addition of loggingSettings with default as parameter WILL have introduced logging configuration bug.
@@ -182,7 +181,7 @@ namespace Microsoft.HandsFree.Mouse
                 _filterSettings.ActiveFilter = FilterType.NullFilter;
             }
 
-            _settings.PropertyChanged += (o, args) => _window.Dispatcher.BeginInvoke(new GazeMouseDelegate(UpdateCursorStyle));
+            _settings.PropertyChanged += (o, args) => _window.Dispatcher.BeginInvoke(new GazePointerDelegate(UpdateCursorStyle));
             _filterSettings.PropertyChanged += (o, args) => _logFilter.Settings = _filterSettings;
 
             _window = window;
@@ -294,10 +293,18 @@ namespace Microsoft.HandsFree.Mouse
                 Owner = Application.Current.MainWindow
             };
 
-            var cursorUri = new Uri("Microsoft.HandsFree.Mouse;component/GazeCursor.cur", UriKind.Relative);
-            Stream cursorStream = Application.GetResourceStream(cursorUri).Stream;
+            var cursorUri = new Uri("Microsoft.HandsFree.GazePointer;component/GazeCursor.cur", UriKind.Relative);
+            var streamResourceInfo = Application.GetResourceStream(cursorUri);
+            if (streamResourceInfo != null)
+            {
+                var cursorStream = streamResourceInfo.Stream;
 
-            _mouseCursor = new Cursor(cursorStream);
+                _mouseCursor = new Cursor(cursorStream);
+            }
+            else
+            {
+                throw new Exception("GazeCursor not found");
+            }
 
             _cursorWindow.Show();
         }

@@ -3,7 +3,7 @@ using Microsoft.HandsFree.Sensors;
 using Microsoft.HandsFree.Settings;
 using Microsoft.HandsFree.Settings.Serialization;
 
-namespace Microsoft.HandsFree.Mouse
+namespace Microsoft.HandsFree.GazePointer
 {
     public class Settings : NotifyingObject
     {
