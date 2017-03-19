@@ -3,10 +3,9 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
-
 using Microsoft.HandsFree.Win32;
 
-namespace Microsoft.HandsFree.Mouse
+namespace Microsoft.HandsFree.GazePointer
 {
     public class MouseInputListener
     {

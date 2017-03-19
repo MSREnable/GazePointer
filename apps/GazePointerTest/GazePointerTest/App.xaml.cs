@@ -1,5 +1,4 @@
-﻿using Microsoft.Shell;
-using System;
+﻿using System;
 using System.Reflection;
 using System.Windows;
 using System.Collections.Generic;

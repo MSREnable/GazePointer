@@ -1,8 +1,8 @@
-namespace Microsoft.HandsFree.Mouse
-{
-    using System;
-    using System.Windows.Threading;
+using System;
+using System.Windows.Threading;
 
+namespace Microsoft.HandsFree.GazePointer
+{
     class IdleDetector
     {
         readonly DispatcherTimer timer = new DispatcherTimer();
