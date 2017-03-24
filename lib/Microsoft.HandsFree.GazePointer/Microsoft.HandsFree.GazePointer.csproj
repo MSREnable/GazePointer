@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{1DC5A095-18E8-4022-B0EC-6C5311BA5AE5}</ProjectGuid>
+    <ProjectGuid>{128A0A18-7FC1-4DB5-BBEC-2174C4C765EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.HandsFree.Filters</RootNamespace>
-    <AssemblyName>Microsoft.HandsFree.Filters</AssemblyName>
+    <RootNamespace>Microsoft.HandsFree.GazePointer</RootNamespace>
+    <AssemblyName>Microsoft.HandsFree.GazePointer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -16,7 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;x64</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -24,33 +24,48 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;x64</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AveragingFilter.cs" />
+    <Compile Include="GazeClickParameters.cs" />
+    <Compile Include="GazeCursorElement.cs" />
+    <Compile Include="GazePointer.cs" />
+    <Compile Include="GazeMouseState.cs" />
+    <Compile Include="IdleDetector.cs" />
+    <Compile Include="MouseHookListener.cs" />
+    <Compile Include="MouseInputListener.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="FilterType.cs" />
-    <Compile Include="GainFilter.cs" />
-    <Compile Include="GazeStats.cs" />
-    <Compile Include="IFilter.cs" />
-    <Compile Include="LogFilter.cs" />
-    <Compile Include="NullFilter.cs" />
-    <Compile Include="OneEuroFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleKalmanFilter.cs" />
-    <Compile Include="StampeFilter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Microsoft.HandsFree.Filters\Microsoft.HandsFree.Filters.csproj">
+      <Project>{1dc5a095-18e8-4022-b0ec-6c5311ba5ae5}</Project>
+      <Name>Microsoft.HandsFree.Filters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj">
       <Project>{3d58b016-b156-4401-8785-4e0182655ede}</Project>
       <Name>Microsoft.HandsFree.MVVM</Name>
@@ -63,12 +78,26 @@
       <Project>{C738745B-1AF0-4D65-BEA7-082FB61864EC}</Project>
       <Name>Microsoft.HandsFree.Settings</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Microsoft.HandsFree.Win32\Microsoft.HandsFree.Win32.csproj">
+      <Project>{0e8c0348-e61b-4209-9d2f-c57e87910675}</Project>
+      <Name>Microsoft.HandsFree.Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GazeCursor.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Microsoft.HandsFree.GazePointer.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

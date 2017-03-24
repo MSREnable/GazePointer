@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.HandsFree.Music.Properties
+namespace GazePointerTest.Properties
 {
 
 
