@@ -67,9 +67,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="TobiiEyeXSdk.cs" />
     <Compile Include="EyeTechSdk.cs" />
-    <Content Include="..\..\external\EyeTechSDK\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\external\QuickLink2_x86_x64_2.7.3.2\bin64\QuickLink2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
