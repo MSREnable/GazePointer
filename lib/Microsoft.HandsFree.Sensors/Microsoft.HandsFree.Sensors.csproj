@@ -34,12 +34,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.HandsFree.Sensors.Interop.EyeTech, Version=1.0.6206.39060, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\external\EyeTechSDK\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll</HintPath>
-    </Reference>
     <Reference Include="EyeXFramework, Version=1.8.503.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Tobii.EyeX.Framework.1.8.503\lib\net40\EyeXFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.HandsFree.Sensors.Interop.EyeTech, Version=1.0.6212.19565, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\..\packages\Microsoft.HandsFree.Sensors.Interop.EyeTech.0.0.1\lib\net461\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -67,9 +66,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="TobiiEyeXSdk.cs" />
     <Compile Include="EyeTechSdk.cs" />
-    <Content Include="..\..\external\QuickLink2_x86_x64_2.7.3.2\bin64\QuickLink2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj">
@@ -92,7 +88,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets'))" />
+    <Error Condition="!Exists('..\..\packages\eyetechds.quicklink2.7.1.2.3\build\eyetechds.quicklink2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\eyetechds.quicklink2.7.1.2.3\build\eyetechds.quicklink2.targets'))" />
   </Target>
+  <Import Project="..\..\packages\eyetechds.quicklink2.7.1.2.3\build\eyetechds.quicklink2.targets" Condition="Exists('..\..\packages\eyetechds.quicklink2.7.1.2.3\build\eyetechds.quicklink2.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
