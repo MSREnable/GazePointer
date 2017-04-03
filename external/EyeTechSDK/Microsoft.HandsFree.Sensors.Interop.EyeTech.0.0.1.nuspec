@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Microsoft.HandsFree.Sensors.Interop.EyeTech</id>
+        <version>0.0.1</version>
+        <authors>joncamp</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>My package description.</description>
+    </metadata>
+    <files>
+        <file src="Microsoft.HandsFree.Sensors.Interop.EyeTech.dll" target="lib\net461\Microsoft.HandsFree.Sensors.Interop.EyeTech.dll" />
+    </files>
+</package>
