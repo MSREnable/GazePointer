@@ -44,7 +44,7 @@ namespace Microsoft.HandsFree.Filters
             }
 
             _kalmanGain.X = _estimateCovariance.X / (_estimateCovariance.X + _measurementCovariance.X);
-            _kalmanGain.X = _estimateCovariance.Y / (_estimateCovariance.Y + _measurementCovariance.Y);
+            _kalmanGain.Y = _estimateCovariance.Y / (_estimateCovariance.Y + _measurementCovariance.Y);
             _filteredX = _filteredX + _kalmanGain.X * (measuredX - _filteredX);
             _filteredY = _filteredY + _kalmanGain.Y * (measuredY - _filteredY);
             _estimateCovariance.X = (1 - _kalmanGain.X) * _estimateCovariance.X;
