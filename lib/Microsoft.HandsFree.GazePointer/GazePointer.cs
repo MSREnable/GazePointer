@@ -617,9 +617,19 @@ namespace Microsoft.HandsFree.GazePointer
             //_trace.TraceInformation("ClickParameters: {0}, Elapsed: {1}", clickParams, elapsed);
 
             // Update the max total time we are maintaining if we ever see a click param higher than what we have.
-            if ((clickParams.RepeatMouseDownDelay > _maxHistoryTime) && (clickParams.RepeatMouseDownDelay != uint.MaxValue))
+            if ((clickParams.RepeatMouseDownDelay > _maxHistoryTime + 1000) && (clickParams.RepeatMouseDownDelay != uint.MaxValue))
             {
-                _maxHistoryTime = clickParams.RepeatMouseDownDelay;
+                _maxHistoryTime = clickParams.RepeatMouseDownDelay + 1000; // in milliseconds
+            }
+
+            if ((clickParams.MouseUpDelay > _maxHistoryTime + 1000) && (clickParams.MouseUpDelay != uint.MaxValue))
+            {
+                _maxHistoryTime = clickParams.MouseUpDelay + 1000; // in milliseconds
+            }
+
+            if ((clickParams.MouseDownDelay > _maxHistoryTime + 1000) && (clickParams.MouseDownDelay != uint.MaxValue))
+            {
+                _maxHistoryTime = clickParams.MouseDownDelay + 1000; // in milliseconds
             }
 
             GazeMouseState oldState = _gazeMouseState;
