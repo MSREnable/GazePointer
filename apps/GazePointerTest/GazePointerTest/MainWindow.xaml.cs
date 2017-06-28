@@ -18,6 +18,8 @@ namespace GazePointerTest
 
         int anotherCount;
 
+        int destructiveCount;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +35,31 @@ namespace GazePointerTest
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _pointer = GazePointer.Attach(this, null, null, AppSettings.Instance.Mouse);
+            _pointer = GazePointer.Attach(this, null, GetGazeClickParameters, AppSettings.Instance.Mouse);
+        }
+
+        private static readonly GazeClickParameters _clickParams = new GazeClickParameters
+        {
+            MouseDownDelay = 90,
+            MouseUpDelay = 800,
+            RepeatMouseDownDelay = uint.MaxValue
+        };
+
+        private static readonly GazeClickParameters _destructiveClickParams = new GazeClickParameters
+        {
+            MouseDownDelay = 90,
+            MouseUpDelay = 2500,
+            RepeatMouseDownDelay = uint.MaxValue
+        };
+
+        GazeClickParameters GetGazeClickParameters(FrameworkElement element)
+        {
+            if (element.Tag != null && element.Tag.ToString() == "DestructiveAction")
+            {
+                return _destructiveClickParams;
+            }
+
+            return _clickParams;
         }
 
         #region Button Handlers
@@ -95,6 +121,11 @@ namespace GazePointerTest
         private void OnAnotherButton(object sender, RoutedEventArgs e)
         {
             SetText(AnotherTextBlock, ref anotherCount);
+        }
+
+        private void OnDestructiveButton(object sender, RoutedEventArgs e)
+        {
+            SetText(DestructiveTextBlock, ref destructiveCount);
         }
     }
 }
