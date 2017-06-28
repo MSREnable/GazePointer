@@ -29,6 +29,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="246"/>
                 <RowDefinition Height="246"/>
+                <RowDefinition Height="246"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -39,6 +40,8 @@
             <TextBlock Grid.Row="0" Grid.Column="1" x:Name="ButtonTextBlock" VerticalAlignment="Center"/>
             <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource GazeButton}" Click="OnAnotherButton" Content="Another" Margin="5" FontFamily="Segoe UI Symbol" FontSize="48" Foreground="White" />
             <TextBlock Grid.Row="1" Grid.Column="1" x:Name="AnotherTextBlock" VerticalAlignment="Center"/>
+            <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource GazeButton}" Click="OnDestructiveButton" Content="Desctructive" Margin="5" FontFamily="Segoe UI Symbol" FontSize="48" Foreground="White" Tag="DestructiveAction" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="DestructiveTextBlock" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">

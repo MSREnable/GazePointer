@@ -616,11 +616,7 @@ namespace Microsoft.HandsFree.GazePointer
 
             //_trace.TraceInformation("ClickParameters: {0}, Elapsed: {1}", clickParams, elapsed);
 
-            // Update the max total time we are maintaining if we ever see a click param higher than what we have.
-            if ((clickParams.RepeatMouseDownDelay > _maxHistoryTime) && (clickParams.RepeatMouseDownDelay != uint.MaxValue))
-            {
-                _maxHistoryTime = clickParams.RepeatMouseDownDelay;
-            }
+            AdjustHistorySampleTime(clickParams);
 
             GazeMouseState oldState = _gazeMouseState;
             switch (_gazeMouseState)
@@ -680,6 +676,26 @@ namespace Microsoft.HandsFree.GazePointer
 
             //_trace.TraceInformation("GazeMouseState: Old={0}, New={1}", oldState, _gazeMouseState);
             return invokeTarget;
+        }
+
+        void AdjustHistorySampleTime(GazeClickParameters clickParams)
+        {
+            // Update the max total time we are maintaining if we ever see a click param higher than what we have.
+            const int PAD_HISTORY = 500;// add a padding of time (in milliseconds) so that the history is slightly larger and includes the largest click param value
+            if ((clickParams.RepeatMouseDownDelay + PAD_HISTORY > _maxHistoryTime) && (clickParams.RepeatMouseDownDelay != uint.MaxValue))
+            {
+                _maxHistoryTime = clickParams.RepeatMouseDownDelay + PAD_HISTORY; 
+            }
+
+            if ((clickParams.MouseUpDelay + PAD_HISTORY > _maxHistoryTime) && (clickParams.MouseUpDelay != uint.MaxValue))
+            {
+                _maxHistoryTime = clickParams.MouseUpDelay + PAD_HISTORY; 
+            }
+
+            if ((clickParams.MouseDownDelay + PAD_HISTORY > _maxHistoryTime) && (clickParams.MouseDownDelay != uint.MaxValue))
+            {
+                _maxHistoryTime = clickParams.MouseDownDelay + PAD_HISTORY;
+            }
         }
 
         void HandleDifferentTarget(FrameworkElement hitTarget)
