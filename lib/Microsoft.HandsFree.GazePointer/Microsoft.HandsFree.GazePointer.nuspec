@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/MSREnable/GazePointer</projectUrl> 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>HandsFree GazePointer Library</description>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2017</copyright>
   </metadata>
   <files>
     <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll" target="content" />
