@@ -67,6 +67,7 @@
     <Compile Include="Sensors.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TobiiEyeXSdk.cs" />
+    <Compile Include="TobiiGazeSdk.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.HandsFree.MVVM\Microsoft.HandsFree.MVVM.csproj">
