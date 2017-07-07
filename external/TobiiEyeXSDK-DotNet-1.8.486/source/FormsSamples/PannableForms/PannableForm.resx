@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="_behaviorMap.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="_text.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam congue et turpis at porttitor. Curabitur dignissim sapien nibh, ut luctus libero congue id. Curabitur condimentum molestie felis, quis laoreet lorem sollicitudin nec. Aenean malesuada ex ut turpis eleifend efficitur. Nunc ut arcu vestibulum, iaculis mi nec, lobortis mauris. Sed vitae urna molestie, commodo risus non, auctor felis. Aenean eget quam metus. Praesent tempor, tellus nec ultrices tempor, erat sem faucibus sem, sed blandit orci eros ac dui. Suspendisse quis condimentum est. Aenean ligula eros, euismod vel dui non, molestie ornare orci. Sed fringilla facilisis quam ultricies elementum. Curabitur vehicula, diam non finibus faucibus, velit felis commodo ligula, vitae tempor justo diam sit amet magna. Sed non diam odio. Curabitur ultricies tempus facilisis. Sed fermentum ultricies pharetra.
+
+Sed sed nisl ac enim pretium pulvinar. Aenean lobortis, dui in varius pretium, libero lacus tincidunt erat, lacinia viverra nisi quam at est. Nunc non tincidunt risus. Maecenas luctus tincidunt diam, at laoreet metus. Aliquam lobortis eros vel augue faucibus, sit amet fringilla enim laoreet. In eget leo faucibus, efficitur lacus rutrum, iaculis tellus. Vestibulum tincidunt pulvinar nibh, id blandit ligula euismod nec. Suspendisse vitae urna nec velit maximus pretium.
+
+Pellentesque condimentum, urna ac varius ultricies, augue odio auctor nunc, ut faucibus nibh ipsum id leo. Ut ut venenatis massa. Donec vehicula purus augue. In nec ornare lorem. Nulla fringilla orci in pellentesque rutrum. Duis id libero convallis, placerat ante sit amet, eleifend nisi. Etiam venenatis eleifend arcu, sed vestibulum elit. Nullam feugiat tellus a felis semper fringilla. Proin tempor nisi in tortor semper, ac efficitur erat pulvinar. Ut iaculis mollis velit lobortis pharetra. In sit amet neque sapien. Ut in efficitur dolor. Vestibulum laoreet posuere lacinia. Morbi vitae euismod nisi, non finibus est. Nunc dapibus sagittis ligula, ac maximus tortor ullamcorper eget. Fusce tortor tortor, suscipit eget lectus ut, efficitur feugiat ex.
+
+Cras semper accumsan odio, at aliquet tellus bibendum sed. Proin magna velit, euismod ut nisi ac, fringilla sollicitudin ligula. Suspendisse finibus rhoncus orci sit amet aliquet. Nulla iaculis faucibus cursus. Aliquam vitae elit leo. Curabitur non elit ut magna volutpat luctus in condimentum risus. Vivamus vitae volutpat justo.
+
+Aenean vestibulum tempor urna pharetra sodales. Ut at lorem porta, venenatis erat ut, facilisis leo. Integer eu dolor non enim ultrices vulputate. Mauris turpis eros, luctus vel ligula a, posuere faucibus arcu. Maecenas sollicitudin auctor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque facilisis congue libero a laoreet. Donec at dapibus mauris, id bibendum risus. Curabitur convallis accumsan libero.
+
+Aliquam luctus odio vitae efficitur ornare. In enim mauris, rhoncus eget arcu at, scelerisque scelerisque sapien. Vestibulum euismod dolor eget fermentum pharetra. Mauris suscipit, lacus eu pretium dapibus, eros nibh auctor velit, molestie aliquet massa erat quis tellus. Curabitur in lacinia libero. Etiam eu lectus quis ante sagittis laoreet. In rutrum nec nulla nec elementum. Sed venenatis, odio sit amet efficitur egestas, felis lectus pulvinar ligula, at congue nibh massa a risus. Fusce vitae sem in massa suscipit faucibus. Morbi eu erat ipsum. Aliquam feugiat tincidunt tellus nec dictum. Nam auctor lacus sit amet odio vehicula, sit amet commodo libero pellentesque. Donec sollicitudin quam quis rutrum iaculis.
+
+Suspendisse cursus vel ante congue euismod. Suspendisse semper egestas sagittis. Mauris vehicula pellentesque semper. Sed malesuada tincidunt fringilla. In venenatis justo ornare diam sodales vehicula. Donec ullamcorper metus sit amet lobortis posuere. Aenean vulputate scelerisque dui ac lobortis. Pellentesque finibus, odio vel commodo tincidunt, ante nulla tincidunt velit, et lobortis neque lorem non sapien. Nullam quis augue et sapien molestie consequat quis et ligula. Mauris bibendum placerat quam, et placerat sem imperdiet quis. Mauris non tincidunt purus.
+
+Quisque eget sem euismod, tempus diam vitae, sagittis nisi. Quisque libero leo, convallis ac urna et, interdum tincidunt nulla. Aenean hendrerit cursus orci, non rutrum libero laoreet sit amet. Phasellus eu velit et ante dictum interdum. Sed euismod euismod risus, vehicula rutrum mauris suscipit nec. Duis quis ullamcorper libero, nec convallis ligula. Quisque dapibus vestibulum convallis. Aliquam non erat sit amet justo facilisis ultrices nec ut libero. Aliquam ut erat interdum, dictum sem ac, mollis risus.
+
+Maecenas posuere, ipsum in posuere tincidunt, eros arcu molestie ex, quis pharetra ex sem vel purus. Nullam porttitor, urna ut gravida rhoncus, odio lectus pulvinar ipsum, at tincidunt enim leo sit amet dui. Fusce ac scelerisque risus. In dignissim malesuada elit, sit amet tincidunt metus euismod eget. Phasellus in risus lacinia, tempus odio non, dignissim metus. In placerat vulputate malesuada. Nulla feugiat nec lorem eget consectetur. Proin sit amet diam vel neque feugiat vulputate. Nunc quam risus, dictum nec justo et, varius dictum lectus. Proin ante felis, aliquam vitae lacus at, mollis lobortis dui. Suspendisse accumsan suscipit elit, sit amet venenatis dui accumsan eget. Aliquam id leo tincidunt, interdum est vel, fermentum metus. Etiam consequat mauris sed fermentum feugiat. Ut luctus metus non sodales pellentesque.
+
+Sed eget diam non urna semper maximus. Mauris justo arcu, aliquam et odio a, rhoncus ultricies dui. Maecenas ultrices sodales luctus. Phasellus erat massa, tempor non arcu eget, suscipit ornare purus. Etiam id dui sed justo porta venenatis. Cras fermentum posuere nunc, vel porttitor justo aliquet at. Quisque luctus pretium pulvinar. Aenean vestibulum turpis sit amet sapien feugiat vulputate. Ut at turpis urna.
+
+Proin a mi erat. Aenean eu sapien ac turpis dictum lobortis. Suspendisse semper commodo mi vel pulvinar. Maecenas rutrum tellus sit amet lorem placerat gravida. Morbi nec felis libero. Morbi sodales condimentum condimentum. Phasellus sodales in augue ut posuere. Quisque neque lectus, efficitur nec tortor non, faucibus pellentesque augue. Sed ac egestas lectus. Nunc sed euismod arcu. Sed ac malesuada velit, sit amet vehicula enim. Duis eu turpis vulputate, porttitor velit nec, congue tellus. Proin ac lectus facilisis, pharetra leo pellentesque, cursus lacus. Sed eu leo eget dolor viverra lacinia. Maecenas ullamcorper diam in lectus gravida, quis condimentum lacus sagittis.
+
+Curabitur feugiat tortor non odio tristique aliquet. Sed nunc ipsum, elementum tincidunt ex quis, fermentum mollis justo. In dui nisl, volutpat quis mi id, dictum gravida ante. Integer id quam odio. Pellentesque mollis dui vel magna posuere, a ornare lectus consectetur. Ut eu dapibus erat. Nullam vel nulla est.
+
+Proin interdum urna non eros suscipit, ut venenatis magna fringilla. Aenean at sem non erat congue pulvinar. Integer accumsan et libero sit amet porta. Integer eu semper mi, quis mattis mauris. Donec at erat et sapien porta facilisis sed et purus. Nullam ultrices, nulla a imperdiet sodales, nibh nisi ullamcorper leo, eu facilisis ex nibh sit amet ligula. Cras tristique purus augue, bibendum molestie eros eleifend quis. Pellentesque ac massa imperdiet, consectetur ipsum ac, mattis leo.
+
+Morbi faucibus varius dolor, sed fringilla ex. Quisque pellentesque, augue a faucibus volutpat, nunc nisl fringilla tellus, sit amet viverra odio tellus ac nunc. Praesent vehicula quam non molestie molestie. Fusce sed congue mi. Mauris eleifend libero consectetur varius vehicula. Vestibulum magna felis, fringilla et commodo euismod, vestibulum feugiat eros. Suspendisse lacinia maximus eros hendrerit tincidunt. Vestibulum pharetra lacus vitae scelerisque faucibus. Etiam neque lorem, bibendum at mauris in, imperdiet tempor nulla. Nullam porttitor lectus id consectetur aliquam. Fusce in urna ac leo bibendum ultrices rhoncus non tellus. Vivamus arcu nisl, venenatis sed malesuada ut, venenatis laoreet arcu. Nunc quis diam vulputate, semper tellus id, ornare leo.
+
+Maecenas lacus tortor, iaculis in aliquam id, iaculis eget quam. Donec tempor blandit vestibulum. Nulla sed ornare felis. Praesent fringilla ultrices nulla at vestibulum. Praesent nulla velit, malesuada at accumsan nec, volutpat quis nulla. Maecenas iaculis rutrum tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue semper odio, nec porttitor justo fringilla nec.
+
+Phasellus id accumsan mauris. Aenean in urna nisi. Vestibulum iaculis scelerisque dictum. Proin ac lorem vestibulum, vulputate diam in, facilisis elit. Integer consectetur mi ac nulla convallis, ut rhoncus metus vestibulum. Fusce sollicitudin condimentum orci. Phasellus interdum sit amet risus et varius. Suspendisse vitae tempus ex. Suspendisse luctus, felis non sagittis pretium, turpis nisl vestibulum arcu, eget facilisis libero purus vel diam. Proin gravida libero non scelerisque pulvinar.
+
+Pellentesque vel lorem et ante eleifend aliquet ut id ex. Phasellus condimentum nibh massa, eget elementum dolor accumsan quis. Curabitur non ante in nunc tristique vulputate eget non enim. Nullam facilisis hendrerit imperdiet. Maecenas pretium lorem et tellus laoreet convallis. Integer orci massa, vulputate nec nisi id, faucibus faucibus leo. Suspendisse potenti.
+
+Fusce malesuada porttitor turpis. Vivamus sit amet velit non purus congue eleifend. Curabitur varius nibh a tincidunt bibendum. Donec sed ligula massa. Phasellus pellentesque urna sed interdum tincidunt. Morbi ut interdum lacus, quis molestie justo. Vestibulum placerat, nibh ac posuere posuere, quam lorem viverra ligula, ac finibus dolor ipsum nec nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In venenatis massa non nisl malesuada finibus. Sed ut libero condimentum, vulputate urna at, congue diam. Nam finibus augue id porta ornare. Phasellus fringilla dui id tellus dignissim semper. Aenean ultrices ipsum ante, a accumsan velit varius vel. Etiam pellentesque arcu vel turpis accumsan dignissim. Mauris lacinia eu nisl eu facilisis. Nam nulla elit, placerat quis mattis et, semper at nisl.
+
+Nullam elementum vitae purus ut porta. Maecenas tincidunt hendrerit dui et interdum. Nam sed hendrerit nisl. Integer leo nunc, vehicula in nulla nec, imperdiet vehicula ipsum. Donec ultrices est vel justo posuere, et aliquam metus vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In ultrices euismod massa id elementum. Proin augue diam, pharetra eget faucibus non, consequat nec ligula.
+
+Sed eget ante venenatis, tempus est sit amet, laoreet nulla. Nunc aliquam rhoncus condimentum. Aenean mollis, dui nec ornare sodales, tellus lectus varius enim, sed pulvinar mi enim non lacus. Vivamus mollis tortor eget auctor mattis. Nulla facilisi. In hac habitasse platea dictumst. Mauris varius aliquam mi at eleifend. Praesent ac tortor sed tortor euismod ultrices non eget purus. Nulla interdum risus massa, ultricies mollis lorem volutpat vitae. Duis fringilla consequat ligula, eget semper nulla congue vitae. Maecenas ac enim ut ante bibendum pharetra vitae at nibh.
+
+Cras vel elit in turpis porttitor vulputate et vitae diam. Vivamus vestibulum velit leo, non tincidunt mauris interdum eu. Integer ante urna, tempus ac libero eu, tristique cursus metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec luctus mi orci, aliquet efficitur mi porta id. Curabitur eu cursus mi. Fusce aliquet nunc a tempus facilisis. Ut quis velit eget enim bibendum mollis a id magna. Maecenas velit purus, efficitur quis fringilla eget, bibendum non odio. Quisque quis porta nulla. Aliquam vitae sollicitudin velit, eu dignissim nulla. Mauris ut iaculis lacus. Cras posuere, ipsum quis suscipit bibendum, metus augue tincidunt ligula, vitae finibus diam nulla a diam.
+
+Donec feugiat nibh dapibus rutrum vehicula. Donec lobortis feugiat lectus, elementum facilisis est vestibulum ut. Curabitur aliquet non nisi et sodales. Pellentesque eleifend dignissim mauris et maximus. Nulla quam orci, tempus id porta quis, suscipit sit amet enim. Nam porta tellus vitae sodales tempus. Cras tempor diam quis nisl eleifend, in malesuada felis laoreet. Fusce sodales semper nibh at scelerisque. Sed vehicula turpis nec lectus vestibulum porttitor. In semper facilisis sem at volutpat. Phasellus in dictum metus, eget blandit nisl. Quisque condimentum pulvinar ultricies.
+
+Proin mattis iaculis sapien, quis imperdiet tellus fermentum id. Duis finibus leo quis magna efficitur rhoncus. In ac tortor sapien. Integer nec purus ut magna ornare pharetra. Suspendisse augue tellus, sollicitudin ac tellus non, luctus laoreet justo. Nulla tristique dolor ut scelerisque egestas. Aenean accumsan sem ac est porttitor sodales.
+
+Fusce suscipit felis bibendum nunc venenatis, gravida iaculis tortor molestie. Vestibulum placerat varius orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse rhoncus interdum urna eu consectetur. Nulla blandit, felis eu euismod vehicula, velit nisl luctus purus, et molestie lacus justo eu metus. Praesent feugiat justo quis orci convallis vulputate. Donec odio sem, cursus eu tellus nec, dignissim efficitur dolor.
+
+Quisque tempor, turpis eu accumsan fringilla, magna mauris vestibulum lorem, nec viverra eros risus pharetra nisl. In tincidunt interdum pulvinar. Nulla at ultricies libero, vitae luctus leo. Proin lobortis at ligula id mollis. Phasellus tellus eros, lacinia sed velit fringilla, rutrum lacinia arcu. Proin est mi, sodales ut purus eu, sollicitudin vulputate justo. Pellentesque faucibus libero a nisl maximus, quis pellentesque dui dictum. Nulla sit amet aliquam diam. In sed tempus quam. Nunc at urna ac magna porta tempor id non ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque pellentesque molestie arcu, nec feugiat ex cursus vitae. Aenean tincidunt pellentesque placerat. Integer metus augue, lacinia ac aliquam nec, condimentum at lacus. Nunc et felis nunc. Phasellus quam leo, pharetra vitae dui in, aliquet rhoncus quam.</value>
+  </data>
+</root>
