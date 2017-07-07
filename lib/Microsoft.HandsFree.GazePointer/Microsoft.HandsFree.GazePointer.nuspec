@@ -13,8 +13,11 @@
     <copyright>Copyright 2017</copyright>
   </metadata>
   <files>
-    <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll" target="content" />
-    <file src="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\Tobii.Gaze.Core.Net.dll" target="content" />
-	<file src="install.ps1" target="tools" />
+    <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\EyeXFramework.dll" target="lib\net461" />
+    <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.Net20.dll" target="lib\net461" />
+    <file src="..\..\external\TobiiEyeXSDK-DotNet-1.8.486\lib\x64\Tobii.EyeX.Client.dll" target="content" />
+    <file src="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\Tobii.Gaze.Core.Net.dll" target="lib\net461" />
+    <file src="..\..\external\TobiiGazeSdk-DotNetApi-2.1.3.304-Win64\lib\TobiiGazeCore64.dll" target="content" />
+    <file src="install.ps1" target="tools" />
   </files>
 </package>
