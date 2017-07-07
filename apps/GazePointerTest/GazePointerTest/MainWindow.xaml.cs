@@ -95,7 +95,13 @@ namespace GazePointerTest
                 Quit = new RelayCommand(ExitApplicationAction),
                 Recalibrate = new RelayCommand(CalibrateAction),
             };
+            settingsWindow.Loaded += SettingsWindow_Loaded;
             settingsWindow.ShowDialog();
+        }
+
+        private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            GazePointer.Attach(sender as Window, null, null, AppSettings.Instance.Mouse, true);
         }
 
         void SetText(TextBlock block, ref int count)
