@@ -26,6 +26,9 @@ namespace Microsoft.HandsFree.GazePointer
 
     public class GazePointer
     {
+        static IntPtr _hwndCursor;
+        static IntPtr _hwndMouseListner;
+
         public const uint DefaultMouseDownDelay = 250;
 
         public delegate GazeClickParameters GetGazeClickParameters(FrameworkElement element);
@@ -140,10 +143,10 @@ namespace Microsoft.HandsFree.GazePointer
         static GazePointer()
         {
             _mouseListener = new MouseInputListener();
-
+            
             _logFilter = new LogFilter();
             _logFilter.Initialize();
-
+           
             CreateCursorWindow();
             _offScreenElement = new FrameworkElement();
             _offScreenElementClickParams = new GazeClickParameters
@@ -152,6 +155,8 @@ namespace Microsoft.HandsFree.GazePointer
                 MouseUpDelay = 2 * DefaultMouseDownDelay,
                 RepeatMouseDownDelay = uint.MaxValue
             };
+
+            _hwndMouseListner = _mouseListener.Hwnd;
         }
 
         private readonly Settings _settings;
@@ -293,6 +298,8 @@ namespace Microsoft.HandsFree.GazePointer
                 Owner = Application.Current.MainWindow
             };
 
+            _cursorWindow.Loaded += new RoutedEventHandler(CursorWindowLoaded);
+            
             var cursorUri = new Uri("Microsoft.HandsFree.GazePointer;component/GazeCursor.cur", UriKind.Relative);
             var streamResourceInfo = Application.GetResourceStream(cursorUri);
             if (streamResourceInfo != null)
@@ -307,6 +314,11 @@ namespace Microsoft.HandsFree.GazePointer
             }
 
             _cursorWindow.Show();
+        }
+
+        private static void CursorWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            _hwndCursor = new WindowInteropHelper(_cursorWindow).Handle;
         }
 
         public void ClearCursorTracks()
@@ -513,7 +525,7 @@ namespace Microsoft.HandsFree.GazePointer
 
             FrameworkElement element = GetGazeElement(initial);
             if (element != null)
-            {
+            {                
                 return element;
             }
 
@@ -538,7 +550,7 @@ namespace Microsoft.HandsFree.GazePointer
             }
 
             element = result as FrameworkElement;
-            SetGazeElement(initial, element);
+            SetGazeElement(initial, element);            
             return element;
         }
 
@@ -674,7 +686,7 @@ namespace Microsoft.HandsFree.GazePointer
                     break;
             }
 
-            //_trace.TraceInformation("GazeMouseState: Old={0}, New={1}", oldState, _gazeMouseState);
+            //_trace.TraceInformation("GazeMouseState: Old={0}, New={1}, hitTarget={2}", oldState, _gazeMouseState, hitTarget);
             return invokeTarget;
         }
 
@@ -712,9 +724,9 @@ namespace Microsoft.HandsFree.GazePointer
         FrameworkElement GetHitTarget(GazeEventArgs ev)
         {
             var pt = new User32.POINT() { X = (int)ev.Screen.X, Y = (int)ev.Screen.Y };
-            var hwnd = User32.WindowFromPoint(pt);
-            if ((_hwndMain != hwnd) && (!User32.IsChild(_hwndMain, hwnd)))
-            {
+            var hwnd = User32.WindowFromPoint(pt);            
+            if ((_hwndMain != hwnd) && (!User32.IsChild(_hwndMain, hwnd)) && _hwndCursor != hwnd && _hwndMouseListner != hwnd)
+            {                
                 return _offScreenElement;
             }
 
@@ -781,7 +793,7 @@ namespace Microsoft.HandsFree.GazePointer
         FrameworkElement GetHitTargetWithMaxTime(GazeEventArgs ev, out long elapsedTime)
         {
             elapsedTime = 0;
-            FrameworkElement hitTarget = GetHitTarget(ev);
+            FrameworkElement hitTarget = GetHitTarget(ev);            
             Debug.Assert(hitTarget != null);
 
             // append this gaze history item and append to the list
