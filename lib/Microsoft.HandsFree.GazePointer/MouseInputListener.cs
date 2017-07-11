@@ -84,5 +84,13 @@ namespace Microsoft.HandsFree.GazePointer
                 return _lastMouseActivityTimer.IsRunning ? _lastMouseActivityTimer.ElapsedMilliseconds : long.MaxValue;
             }
         }
+
+        public IntPtr Hwnd
+        {
+            get
+            {
+                return _listenerHwnd;
+            }
+        }
     }
 }
