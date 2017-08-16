@@ -19,6 +19,9 @@ namespace Microsoft.HandsFree.Sensors
                 case Sensors.TobiiEyeXSDK:
                     gazeDataProvider = new TobiiEyeXSdk(settings.UseFixationStream);
                     break;
+                case Sensors.TobiiGazeSDK:
+                    gazeDataProvider = new TobiiGazeSdk();
+                    break;
                 case Sensors.Mouse:
                     gazeDataProvider = new MouseSdk();
                     break;

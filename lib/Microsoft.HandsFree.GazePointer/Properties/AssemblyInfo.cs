@@ -4,5 +4,5 @@ using System.Reflection;
 [assembly: AssemblyProduct("Microsoft.HandsFree.GazePointer")]
 [assembly: AssemblyCopyright("Copyright © 2017")]
 
-[assembly: AssemblyVersion("1.0.5")]
-[assembly: AssemblyFileVersion("1.0.5")]
+[assembly: AssemblyVersion("1.0.7")]
+[assembly: AssemblyFileVersion("1.0.7")]

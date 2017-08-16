@@ -1,0 +1,182 @@
+﻿<!-- ........................................................ -->
+<!-- Copyright 2014 Tobii Technology AB. All rights reserved. -->
+<!-- ........................................................ -->
+
+<Window x:Class="ActivatableElements.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework"
+        KeyUp="MainWindow_OnKeyUp"
+        KeyDown="MainWindow_OnKeyDown"
+        Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+
+    <!-- This WPF sample illustrates how FrameworkElements can be enabled for direct click
+         by setting the Activatable Behavior on them.
+    
+         Direct click works like this for the user:
+         - The user looks at the element he/she wants to click on
+         - The user presses and releases the direct click key. In this example it is the Right Shift key.
+    
+         An activation event is fired when the direct click key is released and the
+         EyeX Engine finds a suitable EyeX clickable region (a so called 'interactor')
+         to activate.
+    
+         Read more about the Activatable Behavior and its associated concepts in the 
+         Developer's Guide (available online and in the SDK docs/ folder) -->
+
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="MaxWidth" Value="200" />
+            <Setter Property="MaxHeight" Value="75" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style x:Key="EyeXActivatableButtonStyle" BasedOn="{StaticResource ButtonStyle}" TargetType="Button">
+            <!-- By use of attached properties, we can specify that: the button is activatable,
+                 that we do not want tentative activation focus events, and what handler should 
+                 be called when the button is activated. 
+            
+                 Read more about the Activatable Behavior and its associated concepts in the 
+                 Developer's Guide (available online and in the SDK docs/ folder) -->
+            <Setter Property="eyeX:Behavior.Activatable" Value="Default" />
+            <EventSetter Event="eyeX:Behavior.Activate" Handler="Button_OnEyeXActivate" />
+            <!-- We also set up a trigger on the Behavior.ActivationFocus attached property, and
+                 specify how the button should look when focused for activation. 
+            
+                 Alternatively, we could have registered an event handler for the routed
+                 event Behavior.ActivationFocusChanged and done the handling in the code behind
+                 or via the MainWindowModel. -->
+            <Style.Triggers>
+                <Trigger Property="eyeX:Behavior.ActivationFocus" Value="HasActivationFocus">
+                    <Setter Property="BorderBrush" Value="DarkGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" 
+                        Executed="CloseCommand_OnExecuted"
+                        CanExecute="CloseCommand_OnCanExecute"/>
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+
+        <ItemsControl ItemsSource="{Binding Notes}" Grid.Row="0">
+            <!-- ItemsPanelTemplate -->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="5*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <!-- ItemContainerStyle -->
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Grid.Column" Value="{Binding ColumnIndex}" />
+                    <Setter Property="Grid.Row" Value="{Binding RowIndex}" />
+                    <Setter Property="Grid.ColumnSpan" Value="2" />
+                    <Setter Property="Grid.RowSpan" Value="3" />
+                    <!-- By use of attached properties, we can specify that: the item is activatable,
+                         that we do not want tentative activation focus events, and what handler should
+                         be called when the item is activated. 
+                    
+                         These values have to be specified on the ItemContainerStyle level, it will
+                         not work on the ItemTemplate level.
+            
+                         Read more about the Activatable Behavior and its associated concepts in the 
+                         Developer's Guide (available online and in the SDK docs/ folder) -->
+                    <Setter Property="eyeX:Behavior.Activatable" Value="Default" />
+                    <EventSetter Event="eyeX:Behavior.Activate" Handler="Note_OnEyeXActivate" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <!-- ItemTemplate -->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- (We use the trick of putting a border around the text block so that the
+                          text can be centralized vertically.) -->
+                    <Border VerticalAlignment="Stretch"
+                            BorderBrush="{x:Null}"
+                            Background="{Binding BackgroundColor}"
+                            MouseLeftButtonUp="Note_OnMouseLeftButtonUp">
+                        <TextBlock TextWrapping="WrapWithOverflow"
+                                   TextAlignment="Center"
+                                   Padding="20"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Text}" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0 10 10">
+
+            <TextBlock x:Name="textwrapp" Text="Look at the item and use the Right Shift key to click. The MainWindow.xaml is a good starting point for understanding this sample."
+                           TextAlignment="Left" 
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="10,10,20,10.2" Height="55" Width="502" />
+
+            <!-- The two buttons below, together with the code behind, illustrates
+                    how an EyeX activation event can invoke the click event handler or
+                    execute a command on a button.
+            
+                    The EyeX activation handler is specified in the EyeXActivatableStyle 
+                    element above. -->
+
+            <!-- The Restore wisdom button specifies a click event handler -->
+            <Button HorizontalAlignment="Left" 
+                MaxWidth="200" 
+                MaxHeight="75" 
+                Margin="10"
+                Padding="10"
+                Click="RestoreWisdomButton_OnClick"
+                Style="{StaticResource EyeXActivatableButtonStyle}">
+                Restore wisdom
+            </Button>
+
+            <!-- The Close button specifies a command. 
+                 The command binding is specified in the Window.CommandBindings element above -->
+            <Button HorizontalAlignment="Left" 
+                MaxWidth="200" 
+                MaxHeight="75" 
+                Margin="10"
+                Padding="10"
+                Command="ApplicationCommands.Close"
+                Style="{StaticResource EyeXActivatableButtonStyle}">
+                Close window
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

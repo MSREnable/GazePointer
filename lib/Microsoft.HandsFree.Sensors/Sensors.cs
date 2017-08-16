@@ -6,6 +6,8 @@ namespace Microsoft.HandsFree.Sensors
     {
         [Description("Tobii EyeX SDK")]
         TobiiEyeXSDK,
+        [Description("Tobii Gaze SDK")]
+        TobiiGazeSDK,
         [Description("Mouse")]
         Mouse,
         [Description("Log Playback")]

@@ -1,0 +1,226 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>The Tobii Active Display Area Calculator</title>
+    <style>
+        html {
+            background: #aaa;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            width: 700px;
+            background: #fff;
+        }
+
+        h1 {
+            margin-top: 0;
+            padding: 30px 0 30px 0;
+            background: rgb(253, 155, 10);
+            color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: medium;
+        }
+
+        h3 {
+            font-size: medium;
+        }
+
+        h1, h2 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input[type='text'] {
+            width: 80px;
+        }
+
+        li {
+            margin: 0 0 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>The Tobii Active Display Area Calculator</h1>
+    <p>This tool helps you set up the Active Display Area on your eye tracker. The active display area must be configured before the eye tracker can be calibrated.</p>
+	<p>Guidelines for mounting the eye tracker can be found on the <a href="http://developer.tobii.com/eye-tracker-mounting-guidelines/">Tobii Developer Zone</a>.</p>
+
+    <h2>What is the Active Display Area?</h2>
+    <p>All eye trackers from Tobii measure and report the user's eye-gaze position relative to a planar surface called the Active Display Area. For example, in the common scenario where the eye tracker is mounted on a computer monitor, the active display area should be set to the part of the panel where the image shows.</p>
+    <p>The active display area is specified as three points in space corresponding to the top left, bottom left, and top right corners. You can either use the <code>setdisplayarea</code> tool to set the active display area, or use the <code>tobiigaze_set_display_area[_async]</code> API call. The setting will be stored in persistent memory on the eye tracker device.</p>
+
+    <h2>Active Display Area Calculator</h2>
+    <p>You can use this guide to calculate the active display area if your eye tracker is mounted on a display monitor, or something that resembles a display monitor.</p>
+
+    <h3>Step 1: Measure the screen size</h3>
+    <p>That is, the size of the image that displays on the monitor:</p>
+    <img src="images/screen_width_height.svg" alt="Figure illustrating the screen width and height" />
+    <table>
+        <tr>
+            <td>Screen width:</td>
+            <td><input class="in" type="text" id="screenWidthInput"> mm</td>
+        </tr>
+        <tr>
+            <td>Screen height:</td>
+            <td><input class="in" type="text" id="screenHeightInput"> mm</td>
+        </tr>
+    </table>
+
+    <h3>Step 2: Measure the horizontal offset</h3>
+    <p>The value should be zero if the eye tracker is perfectly centered on the screen, a positive value if the eye tracker is to the right of the screen center, or a negative value if the tracker is to the left of the screen center.</p>
+    <img src="images/horizontal_offset.svg" alt="Figure illustrating the horizontal offset" />
+    <p>Horizontal offset: <input class="in" type="text" id="horizontalOffsetInput" /> mm</p>
+
+    <h3>Step 3: Measure the depth and height offsets</h3>
+    <p>The depth offset should typically be positive, meaning that the eye tracker is in front of the screen.</p>
+    <p>The height offset should be zero if the top of the eye tracker is aligned with the bottom of the screen, positive if it is above the bottom of the screen, or negative if it is below the bottom of the screen.</p>
+    <img src="images/depth_and_height_offsets.svg" alt="Figure illustrating the depth and height offsets" />
+    <table>
+        <tr>
+            <td>Depth offset:</td>
+            <td><input class="in" type="text" id="depthOffsetInput"> mm</td>
+        </tr>
+        <tr>
+            <td>Height offset:</td>
+            <td><input class="in" type="text" id="heightOffsetInput"> mm</td>
+        </tr>
+    </table>
+
+    <h3>Step 4: Enter parameters specific for your eye tracker model</h3>
+    <p>
+        Load the default values for:
+        <button id="loadEyeXControllerDefaults">Tobii EyeX Controller</button>
+        <button id="loadREXDefaults">Tobii REX</button>
+    </p>
+
+    <table>
+        <tr>
+            <td>Vertical distance optical center to mid front:</td>
+            <td><input class="in" type="text" id="verticalOCToMidFrontInput"> mm</td>
+        </tr>
+        <tr>
+            <td>Distance mid front to top front:</td>
+            <td><input class="in" type="text" id="midFrontToTopFrontInput"> mm</td>
+        </tr>
+        <tr>
+            <td>Mounting angle:</td>
+            <td> <input class="in" type="text" id="mountingAngleInput"> degrees</td>
+        </tr>
+    </table>
+
+    <h3>Results</h3>
+    The points that specify the active display area are:
+    <pre id="resultingPoints"></pre>
+    You can configure your eye tracker to use these values using the following command:
+    <pre id="resultingCommand"></pre>
+
+    <script>
+//<![CDATA[
+
+function Vector(x, y, z) {
+    this.x = x || 0;
+    this.y = y || 0;
+    this.z = z || 0;
+}
+
+Vector.prototype = {
+    add: function(v) {
+        return new Vector(this.x + v.x, this.y + v.y, this.z + v.z);
+    },
+
+    // rotation around the x axis
+    rotateXDegrees: function(angle) {
+        var angleRad = Math.PI * angle / 180.0;
+        var sinA = Math.sin(angleRad);
+        var cosA = Math.cos(angleRad);
+        return new Vector(this.x, cosA * this.y + sinA * this.z, -sinA * this.y + cosA * this.z);
+    },
+
+    format: function () {
+        return '(' + this.x.toFixed(1) + ', ' + this.y.toFixed(1) + ', ' + this.z.toFixed(1) + ')';
+    },
+
+    formatSimple: function () {
+        return this.x.toFixed(1) + ' ' + this.y.toFixed(1) + ' ' + this.z.toFixed(1);
+    },
+}
+
+function mapProperties(obj, func) {
+    var result = new Object();
+    for (name in obj) {
+        result[name] = func(obj[name]);
+    }
+
+    return result;
+}
+
+function recalculate() {
+    var screenWidth = Number(screenWidthInput.value);
+    var screenHeight = Number(screenHeightInput.value);
+    var horizontalOffset = Number(horizontalOffsetInput.value);
+    var depthOffset = Number(depthOffsetInput.value);
+    var heightOffset = Number(heightOffsetInput.value);
+    var verticalOCToMidFront = Number(verticalOCToMidFrontInput.value);
+    var midFrontToTopFront = Number(midFrontToTopFrontInput.value);
+    var mountingAngle = Number(mountingAngleInput.value);
+
+    // screen corners relative to center bottom screen (CBS)
+    var cbsPoints = {
+        topLeft: new Vector(-screenWidth / 2, screenHeight, 0),
+        topRight: new Vector(screenWidth / 2, screenHeight, 0),
+        bottomLeft: new Vector(-screenWidth / 2, 0, 0)
+    };
+
+    function CBStoUCS(point) {
+        return point
+            .add(new Vector(-horizontalOffset, -heightOffset, -depthOffset))
+            .rotateXDegrees(-mountingAngle)
+            .add(new Vector(0, midFrontToTopFront, verticalOCToMidFront));
+    }
+
+    ucsPoints = mapProperties(cbsPoints, CBStoUCS);
+
+    resultingPoints.textContent =
+        'Top left: ' + ucsPoints.topLeft.format() + ' mm\n' +
+        'Top right: ' + ucsPoints.topRight.format() + ' mm\n' +
+        'Bottom left: ' + ucsPoints.bottomLeft.format() + ' mm';
+
+    resultingCommand.textContent =
+        'setdisplayarea --auto ' +
+        ucsPoints.topLeft.formatSimple() + ' ' +
+        ucsPoints.topRight.formatSimple() + ' ' +
+        ucsPoints.bottomLeft.formatSimple();
+}
+
+loadEyeXControllerDefaults.addEventListener('click', function () {
+    verticalOCToMidFrontInput.value = 10.3;
+    midFrontToTopFrontInput.value = 10;
+    mountingAngleInput.value = 20;
+    recalculate();
+});
+
+loadREXDefaults.addEventListener('click', function () {
+    verticalOCToMidFrontInput.value = 9.5;
+    midFrontToTopFrontInput.value = 14;
+    mountingAngleInput.value = 20;
+    recalculate();
+});
+
+// recalculate when an input changes
+var inputs = document.querySelectorAll('.in');
+for (i = 0; i < inputs.length; i++) {
+    console.log(inputs[i]);
+    inputs[i].addEventListener('change', recalculate);
+}
+      
+recalculate();
+
+//]]>
+    </script>
+</body>
+</html>
