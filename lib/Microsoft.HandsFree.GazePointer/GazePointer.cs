@@ -486,6 +486,14 @@ namespace Microsoft.HandsFree.GazePointer
             GoToState(control, state, true);
         }
 
+        public GazeMouseState GazeMouseState
+        {
+            get
+            {
+                return _gazeMouseState;
+            }
+        }
+
         void SendMouseInput(Point point, User32.MOUSEEVENTF flags, long timestamp)
         {
             User32.INPUT[] input = new User32.INPUT[1];

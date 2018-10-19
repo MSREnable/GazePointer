@@ -1,6 +1,6 @@
 namespace Microsoft.HandsFree.GazePointer
 {
-    enum GazeMouseState
+    public enum GazeMouseState
     {
         MouseEnter,
         MouseDown,
