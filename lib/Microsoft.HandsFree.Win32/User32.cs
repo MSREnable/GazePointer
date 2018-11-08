@@ -715,7 +715,31 @@ namespace Microsoft.HandsFree.Win32
         [DllImport(DllName)]
         public static extern int SetWindowRgn(IntPtr hWnd, IntPtr hRgn, bool redraw);
 
-        [DllImport(DllName, EntryPoint = "FindWindow", SetLastError = true)]
-        public static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
+        [DllImport(DllName, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr FindWindow(String lpClassName, string lpWindowName);
+
+        [DllImport(DllName)]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [Flags]
+        public enum ShowWindowFlags : uint
+        {
+            SW_RESTORE = 9
+        }
+
+        [DllImport(DllName)]
+        public static extern bool ShowWindow(IntPtr handle, ShowWindowFlags nCmdShow);
+
+        // if (IsIconic(handle))
+        //    ShowWindow(handle, SW_RESTORE);
+        // SetForegroundWindow(handle);
+        [DllImport(DllName)]
+        public static extern bool IsIconic(IntPtr handle);
+
+        [DllImport(DllName, CharSet = CharSet.Unicode)]
+        public static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport(DllName)]
+        public static extern bool IsWindowVisible(IntPtr hWnd);
     }
 }
